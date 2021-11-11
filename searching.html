@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+	<script src="index.js"></script>
+	
+  
+   
+  </head> 
+
+  
+
+
+
+<body>
+	<div w3-include-HTML="header.html">My HTML include will go here.</div>
+<script>
+(function () {
+  myHTMLInclude();
+  function myHTMLInclude() {
+    var z, i, a, file, xhttp;
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      if (z[i].getAttribute("w3-include-html")) {
+        a = z[i].cloneNode(false);
+        file = z[i].getAttribute("w3-include-html");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState == 4 && xhttp.status == 200) {
+            a.removeAttribute("w3-include-html");
+            a.innerHTML = xhttp.responseText;
+            z[i].parentNode.replaceChild(a, z[i]);
+            myHTMLInclude();
+          }
+        }      
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        return;
+      }
+    }
+  }
+})();
+</script>
+<header class="Searching">
+	<figure class="textover">
+		<img src="./images/bg2.jpg" id="bg" alt="">
+    <h1>Searching Algorithms</h1>
+    <h2>Introduction to Searching Algorithms</h2>
+    <p>
+      Not even a single day passes, when we do not have to search for something in our day to day life,<br> car keys, books, pen, mobile charger and what not. Same is the life of a computer, there is so much <br>data stored in it, that whenever a user asks for some data, the computer has to search it's memory to <br> look for the data and make it available to the user.<br>
+      <br>The searching algorithms are used to search or find one or more than one element from a dataset
+      <span id="dots">...<br><br></span><span id="more"><br> All search algorithms make use of a search key in order to complete the procedure. Any search is<br> said to be successful or unsuccessful depending upon whether the element that is being searched<br> is found or not.<br><br> These algorithm  search for a target (key) in the search space, like for example,All students in the class.<br>
+        There are 2 possible outcomes for this- 
+        <br>'Success' -  When target is found. <br> 
+         ‘Failure’ - When target is not found.<br></span>
+        
+
+        <button onclick="toggleText()" id="textButton">Read more</button>
+    </p>
+    
+    
+	</figure>
+ 
+</header>
+	
+		<!--<ul class="Navigation" id="navig">
+			<li class="inner">
+				<a  href="index.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()" ><strong> Home </strong></a>
+
+			</li>
+			<li class="inner">
+				<a class="active" href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
+				
+			</li>
+			<li class="inner">
+				<a href="sorting.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Sorting Algoritms </strong></a>
+			</li>
+			<li class="inner">
+				<a href="graphs.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Graphs </strong></a>
+
+			</li>
+			<li class="inner">
+				<a href="dynamic.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Dynamic Programming </strong></a>
+
+			</li>
+			
+		</ul>-->
+</body>
+</html>

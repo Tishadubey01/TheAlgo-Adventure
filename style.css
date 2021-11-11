@@ -1,0 +1,464 @@
+* {
+  padding:0px;
+    margin:0px;
+  
+  
+  
+}
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+  .content {
+    padding: 16px;
+  }
+  /* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+  
+  /*@media only screen {
+    
+       header.home {
+            background-image: url(./images/bg1.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+background-color: cadetblue;
+background-position: center center;
+
+    max-width: 100%;
+    height: auto;
+    }
+    }
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  
+  .sticky+.content {
+      padding-top: 60px;
+  }
+  
+  style {
+      background-blend-mode: color;
+  }
+  * {
+    box-sizing: border-box;  }
+  
+    header {
+      width: 100%;
+    }
+  
+ /* #top-left {
+   
+    bottom: 15em;
+    left: 3em;
+    font-size: 2.5em;
+  
+
+  }
+#container {
+  background: url(./images/bg1.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100;
+}
+  
+  /*.Navigation {
+    background-color: rgb(255, 255, 255);
+      padding-top:0;
+      height:70px;
+      width:100%;
+      border-bottom: 1px solid;
+      position: fixed;
+      overflow: hidden;
+      z-index: 1;
+      }
+  .inner {
+    float: left;
+  
+    padding-top:1px;
+    padding-right:10px;
+    padding-bottom:4px;
+    padding-left:15px;
+    color:white;
+    text-decoration:none;
+    margin-right:5px;
+    font-family: 'Cookie';
+    font-size:25px;
+    margin-top:15px;
+    margin-left:10px;
+    
+  
+  
+  }
+  
+  
+  
+  .inner a{
+      stroke-opacity: initial;
+      float: left;
+      color: #f190dc;
+      text-align: center;
+      padding: 1rem 1rem;
+      font-size: 1.7rem;
+      text-decoration: none;
+    
+   }
+      
+  .inner a:hover{
+       color: black;
+       background-color: rgb(157, 42, 235);
+       text-decoration: none;
+    transition: all 0.3 ease-in;
+      }
+  
+  .inner a.active{
+       color: rgb(77, 169, 231);
+       background-color: rgb(233, 183, 89);
+      }*/
+/*.navbar {
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  padding-top:0;
+  position: fixed;
+    
+  width:100%;
+  border-bottom: 0.1em solid;
+  z-index: 1;
+}   
+.navbar a  {
+  stroke-opacity: initial;
+  float: left;
+  color: #f190dc;
+  
+  text-align: center;
+  padding: 1rem 1rem;
+  font-size: 1.7rem;
+  text-decoration: none;
+}   
+.navbar a.active {
+  color: cadetblue;
+  background-color: darkgreen;
+}
+.navbar a:hover ,.subnav:hover .subnavbtn{
+  background: black;
+  color: rgb(77, 169, 231);
+
+}
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 1.7rem;  
+  border: none;
+  outline: none;
+  color:#f190dc;
+  padding: 1rem 1rem;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  
+}
+
+.subnav-content {
+  display: none;
+  position: fixed;
+  left: 0;
+  background-color:rgb(109, 142, 165);
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+/*header.home {
+background-image: url(./images/bg1.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+background-color: cadetblue;
+background-position: center center;
+
+      }
+     */
+
+     .textover img { min-width: 100%;background-size: 100% auto contain;background-position: center center;background-repeat: no-repeat;background-attachment: fixed;
+      min-height: 100%; } 
+     .textover { position: relative;background-size: 100% auto contain; min-width: 100%;min-height: 100%;} /* REQUIRED */
+.textover figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 2%;
+  top: 20%;
+ min-width: 100%;
+
+  
+}
+.textover figcaption {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  color: rgb(250, 250, 250);
+  text-align: left;
+  font-size: 3.9rem;
+  font-style: bold;
+  text-decoration: darkslateblue;
+  text-transform: capitalize;
+  text-shadow: darkslateblue;
+  text-decoration-style: wavy;
+  
+    animation-duration: 3s;
+    animation-name: slidein;
+  
+}
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+.textover h1 {
+  position: absolute;
+  bottom: 0;
+  left:30%;
+  right: 50%;
+  top: 2%;
+ min-width: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  color: rgb(250, 250, 250);
+  text-align: left;
+  font-size: 2.9rem;
+  font-style: bold;
+}
+
+.textover h2 {
+  position: absolute;
+  bottom: 0;
+  left:31%;
+  right: 50%;
+  top: 13%;
+ min-width: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 22px;
+  color: rgb(250, 250, 250);
+  text-align: left center;
+  font-size: 1.5rem;
+  font-style: bold;
+}
+.textover p {
+  position: absolute;
+  bottom: 0;
+  left:0%;
+  right: 50%;
+  top: 25%;
+ min-width: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 22px;
+  color: rgb(0, 0, 0);
+  text-align: left center;
+  font-size: 1.5rem;
+  font-style: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.textover figcaption h2 {
+  font-size: 1rem;
+  font-style: italic;
+  text-align: left center;
+  padding-left: 23%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+html {
+    margin: 0px;
+    padding: 3px;
+    font-family: sans-serif;
+}
+a {
+    text-decoration: none;
+    /*Remove underline on anchors*/
+}
+ul {
+    list-style: none;
+    /* Rmove list styles*/
+}
+/*-- parent nav--*/
+
+.navContainer {
+    
+    padding: 18px;
+    background-color: #3a21c1
+    
+}
+.navContainer nav {
+    max-width: 100%;
+    margin: auto;
+    
+    
+}
+.navContainer nav >ul >li {
+    display: inline-block;
+    padding-right: 10px;
+    
+}
+.navContainer nav li >a {
+  display: block;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 15px;
+  border-bottom: 2px solid #ccc;
+  min-width: 100%;
+  background: #f0f0f0;
+  color: #555;
+  text-align: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  
+  
+}
+nav >ul >li >ul {
+  position: absolute;
+  border: 0.2em solid 1b17d1;
+  display: none;
+  z-index: 999;
+}
+nav >ul >li >ul >li >ul,
+nav >ul >li >ul >li >ul>li>ul {
+  position: absolute;
+  left: 100%;
+  width: 170px;
+  top: 0px;
+  display: none;
+  z-index: 999;
+  border: 0.1em solid #1b17d1;
+  -webkit-animation: threeD.1s;
+    /* Chrome, Safari, Opera */
+    
+    animation: threeD .1s;
+}
+nav >ul >li:hover >ul,
+nav >ul >li >ul >li:hover >ul,
+nav >ul >li >ul >li>ul>li:hover ul {
+    display: block;
+    
+}
+nav li {
+  position: relative;
+}
+
+nav >ul >li >ul >li {
+  width: 140px
+}
+nav >ul >li:after {
+  content: '';
+  height: 2px;
+  width: 2px;
+  background: #000;
+  color: #fff;
+  opacity: 0;
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+}
+nav >ul >li:hover:after {
+  content: '';
+  opacity: 1;
+  height: 3px;
+  width: 100%;
+  transition: 0.5s;
+}
+@keyframes threeD {
+  0% {
+      transform: perspective( 400px) rotateY( 0deg);
+      opacity: 0;
+      left: 150%;
+      top: 150%;
+  }
+  20% {
+      transform: perspective( 400px) rotateY( -45deg);
+      opacity: 0.2;
+      left: 140%;
+      top: 140%;
+  }
+  40% {
+      transform: perspective( 400px) rotateY( -45deg);
+      opacity: 0.4;
+      left: 130%;
+      top: 130%;
+  }
+  60% {
+      transform: perspective( 400px) rotateY( -45deg);
+      opacity: 0.6;
+      left: 120%;
+      top: 120%;
+  }
+  80% {
+      transform: perspective( 400px) rotateY( -45deg);
+      opacity: 0.8;
+      left: 110%;
+      top: 110%;
+  }
+  100% {
+      transform: perspective( 400px) rotateY( -45deg);
+      left: 100%;
+      top: 100%;
+      opacity: 1;
+  }
+}
+#more {
+  display: none;
+  
+
+  
+
+}
+
+
+
+
