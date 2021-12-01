@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">DFS</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1><br>
+      <p>
+
+        Depth First Search (DFS) is one of the main type of tree-searching algorithm. The idea is that this algorithm explores any particular path all the way “down” to the leaves of the path, and then slowly traverses back up the tree. We start out at the root vertex and then pick any path connecting the root to a leaf, exploring all of the intermediate vertices in the process.<br>
+        <br><img src="./images/dfs.gif" style="align-self: center;padding-left: 35%;"><br>
+      </p>
+      <h1>Algorithm</h1>
+      <pre>
+        <code>
+          dfs_algorithm {
+            1. create a stack of vertices;
+            2. add root to the stack to start;
+            while stack is not empty {
+              3. pop vertex from top of stack;
+              4. make sure this vertex has not been visited before;
+              5. look at it's value and do things as appropriate;
+              6. push the children of the vertex to the top of the stack;
+              7. mark the vertex as visited;
+            }
+          }
+        </code>
+      </pre>
+      <h1>Implementation</h1>
+      <p><br>
+        As we can see, the algorithm is really similar to the BFS algorithm, which the exception that we use a stack to decide which vertex to visit next instead of queue. This rather subtle change has a really big difference on how we traverse through the tree: because a stack if a LIFO data structure, the children of nodes will be visited before other parent nodes at the same depth. This allows the algorithm to explore paths all the way down to the leaves, which is why the algorithm is called depth first search.
+<br><br>
+In general, DFS is usually a faster algorithm than DFS, and while it doesn’t find the shortest, optimal path between the root and a vertex like BFS does, it’s able to find a path rather quickly.
+
+      </p>
+      <div id="nextPreviousButtons">
+
+
+
+        <a href="bfs.html" class="previous"> &laquo; Previous </a>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>
+      

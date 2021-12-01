@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Linear Search</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1>
+      <p> <br>Linear search is a basic search algorithm. A sequential search is performed across all objects one by one
+        in this type of search. Every item is verified, and if a match is discovered, that item is returned; otherwise,
+        the search continues until the data collection is completed.
+        <br><br> It examines each element until it finds a match, starting at the beginning of the data set, until the
+        end. The search is finished and terminated once the target element is located. If it finds no match, the
+        algorithm must terminate its execution and return an appropriate result.
+        <br><br>For example, Given an array of 10 integers, we need to find the position of element with the value 33.To
+        determine the position, every element in the array from beginning to end will be compared with the value 33,to
+        check which element matches with the value 33. <br> <img src="./images/linear_search.gif"
+          style="align-self: center;padding-left: 35%;"> <br>
+        Linear search is widely used for the list in which the items are unsorted i.e, in unordered list.
+      </p>
+      <div id="nextPreviousButtons">
+
+
+
+        <a href="linearimplementation.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="linearoverview.html">Overview</a></li>
+        <li><a href="linearimplementation.html">Implementation</a></li>
+        <li><a href="searchvisual.html">Visualizer</a></li>
+        <li><a href="linearcode.html">Algorithm - Analysis</a></li>
+        <li><a href="linearexample.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

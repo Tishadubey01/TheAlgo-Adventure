@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">Bubble Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Examples</h1><br>
+      <h2><br> Optimized Code Example: (in C)</h2><br>
+      <p>
+          <code>
+            #include &lt;stdio.h&gt; <br>
+
+            void BubbleSort(int A[ ], int n)<br>
+{<br>
+    &emsp;for(int i=0; i &lt; n-1; i++)<br>
+    &emsp;{ <br>
+        &emsp;&emsp;int flag=0;<br>
+        &emsp;&emsp;for(int j=0; j &lt; n-i-1; j++)<br>
+
+        &emsp;&emsp;{<br>       
+        &emsp;&emsp;&emsp;if(A[j] > A[j+1]))<br> 
+        &emsp;&emsp;&emsp;{<br>
+        &emsp;&emsp;&emsp;&emsp;int temp = A[j];<br>
+        &emsp;&emsp;&emsp;&emsp;A[j] = A[j+1];<br>
+        &emsp;&emsp;&emsp;&emsp;A[j+1] = temp;<br>
+        &emsp;&emsp;&emsp;&emsp;flag=1;<br> 
+        &emsp;&emsp;&emsp;}<br>
+        &emsp;&emsp;}<br>
+        &emsp;&emsp;if(flag==0)<br>
+        &emsp;&emsp;&emsp;break;<br>
+        &emsp;} <br>
+        
+    }<br>
+    void display(int A[ ], int n)<br>
+    &emsp;{ <br>
+        
+        &emsp;&emsp;for(int i=0; <i></i> &lt; n; i++)<br>
+        &emsp;&emsp;{<br>
+        &emsp;&emsp;&emsp; printf("Elements after sorting: %d  ", A[i]);<br>       
+        &emsp;&emsp;}<br>
+    &emsp;}<br>
+            int main()<br> {<br>
+            
+              &emsp;&emsp;int A[ ] = {-2, 45, 0, 11, -9};<br>
+              &emsp;&emsp;int n sizeof(A) / sizeof(A[0]);<br>
+             
+              &emsp;&emsp;BubbleSort(arr, size);<br>
+              &emsp;&emsp;display(arr, size);<br>
+              }<br>}
+          </code>
+      </p>
+      <h3>Output: </h3><br>
+      <p><code>
+        Elements after sorting: &ensp;-9&ensp;-2&ensp;0&ensp;10&ensp;11&ensp;45  <br>
+    </code></p>
+      <h2>Applications: </h2>
+      <br>
+      <ol>
+        <li><span> It is majorly used where complexity does not matter.</span></li>
+        <li><span> It is used to identify whether the list is already sorted. When the list is already sorted (which is the best-case scenario), the complexity of bubble sort is only O(n).
+          </span></li>
+        <li><span> It works as a method for teaching new programmers how to sort data sets because the algorithm is straightforward to understand and implement.</span></li>
+        <br>
+      </ol><br>
+      <div id="nextPreviousButtons">
+
+
+
+        <a href="bubblecode.html" class="previous"> &laquo; Previous</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="bubbleoverview.html">Overview</a></li>
+        <li><a href="bubbleimplement.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="bubblecode.html">Algorithm - Analysis</a></li>
+        <li><a href="bubbleexample.html">Examples</a></li>
+
+    </ul>
+    </div>
+
+  </header>
+</body>
+
+</html>

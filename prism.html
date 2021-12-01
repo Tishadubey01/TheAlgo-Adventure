@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">Prim's Algorithm</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1><br>
+      <p>
+
+        Prim's Algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every node, where the total weight of all the edges in the tree are minimized.<br>
+        <br><video controls autoplay>
+          <source src="./images/prismm.mp4" type="video/mp4" autoplay style="align-self: center;padding-left: 35%;"> <br>
+        </video>
+      </p>
+      <h1>Algorithm</h1>
+      <pre>
+        <code>
+          Procedure PrimsMST(Graph):     // here Graph is a non-empty connected weighted graph
+          Vnew[] = {x}                   // New subgraph Vnew with source node x
+          Enew[] = {}
+          while Vnew is not equal to V
+              u -> a node from Vnew
+              v -> a node that is not in Vnew such that edge u-v has the minimum cost
+                                         // if two nodes have same weight, pick any of them
+              add v to Vnew
+              add edge (u, v) to Enew
+          end while
+          Return Vnew and Enew
+        </code>
+      </pre>
+      <h1>Implementation</h1>
+      <p><br>
+        <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Select a random vertex.</em></strong>
+       <br><br> <strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Choose the path with the minimum weight connected to the chosen vertex.</em></strong>
+       <br><br> <strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> The path will lead you to a new vertex, position yourself there.</em></strong>
+       <br><br> <strong style="color:rgb(47, 122, 184);"> Step 4 :</strong> <em> Once you have formed/updated the initial tree, choose the path with the minimum weight that is connected to the whole tree. You must avoid creating cycles.</em></strong>
+       <br><br> <strong style="color:rgb(47, 122, 184);"> Step 5 :</strong> <em> Repeat the steps 3 and 4 until you have covered all the vertices.</em></strong>
+
+      </p>
+      <h1>Time Complexity </h1>
+      <br><ol>
+        <li>
+          <span>
+            The time complexity of Prim's algorithm is O(VlogV + ElogV).
+          </span>
+        </li>
+        <li>
+          <span>
+            Given that the total time complexity of the algorithm is O(VlogV + ElogV), we can simplify to O((V+E)logV). In a dense graph E > V, so we can conclude O(ElogV).
+          </span>
+        </li>
+        
+      </ol>
+      <br><div id="nextPreviousButtons">
+
+
+        <a href="kruskal.html" class="previous"> &laquo; Previous </a>
+ 
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>
+      

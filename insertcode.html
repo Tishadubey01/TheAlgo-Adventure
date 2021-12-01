@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Insertion Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Algorithm - Analysis</h1>
+
+      <br>
+      <h2> &emsp;Algorithm: </h2>
+      <p> <code>
+        procedure insertionSort <br>
+        &emsp;A: array of items<br>
+        &emsp;int holePosition<br>
+        &emsp;int value<br>
+        
+        &emsp;for i=1 to length(A) inclusive do:<br>
+        <em>// Set value to insert</em><br>
+        &emsp;&emsp;value = A[i]<br>
+        &emsp;&emsp;holePosition = i<br><br>
+        <em>// Locate hole position for the element</em><br>
+        &emsp;&emsp;while holePosition&gt;0 and A[holePosition-1]&gt;value do:<br>
+        &emsp;&emsp;&emsp;A[holePosition]=A[holePosition-1]<br>
+        &emsp;&emsp;&emsp;holePosition=holePosition-1<br>
+        &emsp;&emsp;end while<br>
+       
+        <em>//insert the number at hole position </em><br>
+        &emsp;&emsp;A[holePosition]=value<br>
+        
+        &emsp;end for<br>
+        end procedure<br>
+
+
+
+
+
+   
+      </code></p>
+      <h2>&emsp;Pseudo Code</h2>
+      <p><code>
+        void insertionSort(int array[ ], int size) <br>
+{<br>
+    
+    &emsp;for (int step=1;step&lt;size;step++)<br>
+    &emsp;{ <br>
+        &emsp;&emsp;int key=array[step];<br>
+        &emsp;&emsp;int j=step-1;<br> 
+        <em>// Compare key with each element on the left of it until an element smaller than
+            it is found.
+             For descending order, change key<array[j] to key>array[j]..</em><br>
+            &emsp;&emsp;while(key&lt;array[j] && j&gt;=0)<br>
+        &emsp;&emsp;&emsp;{<br>       
+            &emsp;&emsp;&emsp;&emsp;array[j+1]=array[j];<br>
+            &emsp;&emsp;&emsp;&emsp;--j;<br>
+            &emsp;&emsp;&emsp;}<br>
+            &emsp;&emsp;array[j+1]=key;<br>
+            &emsp;}<br>
+        }<br>
+           
+        
+
+      </code></p>
+      <h2> &ensp;Time Complexity Analysis: </h2>
+      <p> Insertion sort is an efficient sorting algorithm, as it does not run on preset conditions using for loops, but instead it uses one while loop, which avoids extra steps once the array gets sorted.
+<br>Even though insertion sort is efficient, still, if we provide an already sorted array to the insertion sort algorithm, it will still execute the outer for loop, thereby requiring n steps to sort an already sorted array of n elements, which makes its best case time complexity a linear function of n.
+
+
+         <br><br>
+       
+        Hence for a given input size of n, following will be the time and space complexity for selection sort algorithm:<br>
+      </p>
+      <ol>
+        <li><span> Best Case Time Complexity:<strong> O(n)</strong><br>
+            It occurs when there is no sorting required, i.e. the array is already sorted.</span></li>
+        <li><span> Worst Case Time Complexity:<strong>  O(n²)</strong><br>
+            It occurs when the array elements are required to be sorted in reverse order. That means suppose you have to sort the array elements in ascending order, but its elements are in descending order.
+
+        </span></li>
+        <li><span> Average Time Complexity: <strong>  O(n²)</strong><br>
+            It occurs when the array elements are in jumbled order that is not properly ascending and not properly descending.</span></li>
+        <br>
+      </ol>
+      <br>
+      
+        
+      <h2> Space Time Complexity:</h2>
+      <ol>
+        <li><span> Insertion sort is a stable algorithm.</span></li>
+        <li><span> In insertion sort, an extra variable is required for swapping.
+.
+        </span></li>
+        <li><span> Hence, the space complexity works out to be <strong>O(1)</strong>.</span></li>
+        <br>
+      </ol>
+      <br>
+      <div id="nextPreviousButtons">
+
+
+        <a href="insertimpl.html" class="previous"> &laquo; Previous</a>
+        <a href="insertexam.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="insertover.html">Overview</a></li>
+        <li><a href="insertimpl.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="insertcode.html">Algorithm - Analysis</a></li>
+        <li><a href="insertexam.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

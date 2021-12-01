@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Insertion Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Examples</h1>
+      <h2><br>Code Example: (in C)</h2><br>
+      <p> <code>
+        &emsp;&emsp;// Insertion Sort in C <br>
+
+#include &lt;stdio.h&gt; <br>
+
+
+void insertionSort(int arr[ ], int n)<br> 
+{<br>
+  
+  &emsp;int i,j,small;
+  <br>&emsp;for (i=0; i&lt;n-1;i++)<br>
+  &emsp;{<br>
+    &emsp;&emsp;small=arr[i];<br>
+    &emsp;&emsp;j=i-1;<br>
+
+      &emsp;&emsp;while(j&gt;=0 &&  small&lt;=arr[j])<br>
+      &emsp;&emsp;{<br>
+      &emsp;&emsp;&emsp;arr[j+1]=arr[j];<br>
+      &emsp;&emsp;&emsp;j=j-1;<br>
+      &emsp;&emsp;}<br>
+     
+      &emsp;&emsp;arr[j+1]=small;<br>
+      
+      &emsp;}<br>
+  }<br>
+  
+  
+
+
+
+
+int main()<br> {<br>
+
+  
+  &emsp;int a[ ] = { 12,31,25,8,32,17 };<br>
+  &emsp;int n = sizeof(a)/sizeof(a[0]);<br>
+  &emsp;int i;<br>
+  &emsp;insertionSort(a,n);<br>
+  &emsp;for(i=0;i&lt;n;i++)<br>
+  &emsp;&emsp;printf("Elements after sorting: %d",a[i]);<br>
+
+  &emsp;&emsp;printf("List before sorting\n");<br>
+
+ 
+
+}<br>
+
+</code></p>
+      <h3>Output: </h3><br>
+      <p><code>
+         
+         Elements after sorting: 
+8 12 17 25 31 32<br>
+</code></p>
+      <h2>Advantages:</h2>
+
+      <br>
+      <ol>
+        <li><span> Simple implementation.
+        </span></li>
+        <li><span> Efficient for small data sets.
+          </span></li>
+          <li><span>Selection sort can be good at checking if everything is already sorted. It is also good to use when memory space is limited.</span></li>
+        <li><span>It outperforms the Bubble Sort and Selection Sort algorithms.
+        </span></li>
+        <br>
+      </ol><br>
+      <h2>Daily life example of Insertion Sort</h2>
+
+      <br>
+      <ol>
+        <li><span> Example of insertion sort is how tailors arrange shirts in a cupboard, they always keep them in sorted order of size and thus insert new shirts at the right position very quickly by moving other shirts forward to keep the right place for a new shirt.
+        </span></li>
+          <br> 
+        
+        
+        <br>
+      </ol><br>
+
+      <div id="nextPreviousButtons">
+
+
+        <a href="insertcode.html" class="previous"> &laquo; Previous</a>
+
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="insertover.html">Overview</a></li>
+        <li><a href="insertimpl.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="insertcode.html">Algorithm - Analysis</a></li>
+        <li><a href="insertexam.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

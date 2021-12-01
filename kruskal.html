@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">Kruskal's Algorithm</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1><br>
+      <p>
+
+        Kruskal’s Algorithm follows the Greedy Algorithm to construct a Minimum Spanning Tree for a connected, weighted, and undirected graph. This algorithm treats the graph as a forest and its vertices as an individual tree. The aim of this algorithm is to find a subset of the edges that forms a tree that includes every vertex with minimum edges.<br>
+        <br>
+        A single graph can have many different spanning trees. A minimum spanning tree for a weighted, connected, and the undirected graph is a spanning tree with the sum of edges weight is less than or equal to the sum of edges weight of every other spanning tree.<br>
+        <br><img src="./images/kruskal.gif" style="align-self: center;padding-left: 35%;"><br>
+      </p>
+      <h1>Algorithm</h1>
+      <pre>
+        <code>
+          Kruskal()
+	solve all edges in ascending order of their weight in an array e
+	ans = 0
+	for i = 1 to m
+		v = e.first
+		u = e.second
+		w = e.weight
+		if merge(v,u) // there will be no cycle
+			then ans += w
+        </code>
+      </pre>
+      <h1>Implementation</h1>
+      <p><br>
+        <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Sort all the edges in non-decreasing order of their weight.</em></strong>
+       <br><br> <strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Pick the smallest edge. Check if it forms a cycle with the spanning tree formed so far using Union Find data-structure. If cycle is not formed, include this edge else, discard it.</em></strong>
+       <br><br> <strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> Repeat Step 2 until there are (V-1) edges in the spanning tree.</em></strong>
+
+
+      </p>
+      <h1>Time Complexity </h1>
+      <br><ol>
+        <li>
+          <span>
+            Sorting of edges takes O(ELogE) time.After sorting, we iterate through all edges and apply find-union algorithm.
+          </span>
+        </li>
+        <li>
+          <span>
+            The find and union operations can take at most O(LogV) time.
+          </span>
+        </li>
+        <li>
+          <span>
+            So overall complexity is O(ELogE + ELogV) time.
+          </span>
+        </li>
+        <li>
+          <span>
+            The value of E can be at most O(V²), so O(LogV) is O(LogE) the same.
+          </span>
+        </li>
+        <li>
+          <span>
+            The overall time complexity is O(ElogE) or O(ElogV).
+          </span>
+        </li>
+      </ol>
+      <br><div id="nextPreviousButtons">
+
+
+
+        <a href="prism.html" class="next"> Next &raquo; </a>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>
+      

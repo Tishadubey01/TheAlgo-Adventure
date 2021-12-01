@@ -1,0 +1,246 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+body {
+	display: grid;
+	
+	background-color: #ffffff !important;
+	font-family: Verdana, sans-serif;
+}
+
+
+.data-container {
+	width: 600px;
+	height: 384px;
+	position: relative;
+	margin: 0 auto;
+}
+
+
+.bar {
+	width: 28px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-radius: 5px; 
+	background-color: #1f4287;
+	transition: 0.2s all ease;
+}
+
+.bar_id {
+	position: absolute;
+	top: -24px;
+	width: 100%;
+	color: #6b778d;
+	text-align: center;
+}
+
+
+#wrap {
+	position: relative;
+	
+	 width: cover;
+	  height: 150px; 
+	  margin: 0; padding: 0;
+	background: #000 url(./images/header.gif) no-repeat;
+	background-size: 150em 10.5em;			
+  }
+  #wrap h1#logo-text {
+	  position: absolute;
+	  margin: 0; padding: 0;
+	  font: bolder 3.1em 'Trebuchet MS', Arial, Sans-serif;
+	  letter-spacing: -2px;
+	  color: #FFF;
+	  text-transform: none;
+	text-align: center;
+	  
+	  /* change the values of top and right to adjust the position of the logo*/
+	  top: 48px; 
+	left: 17em;
+	
+  }
+
+
+
+  html {
+	margin: 0px;
+	padding: 3px;
+	font-family: sans-serif;
+  }
+  a {
+	text-decoration: none;
+	  /*Remove underline on anchors*/
+  }
+  ul {
+	list-style: none;
+	  /* Rmove list styles*/
+  }
+  /*-- parent nav--*/
+  
+  .navContainer {
+	  
+	padding: 18px;
+	background-color: #ffffff
+	  
+  }
+  .navContainer nav {
+	max-width: 100%;
+	margin: auto;
+	  
+	  
+  }
+  .navContainer nav >ul >li {
+	display: inline-block;
+	padding-right: 10px;
+	  
+  }
+  .navContainer nav li >a {
+	display: block;
+	position: relative;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 4px 15px;
+	border-bottom: 2px solid #ccc;
+	min-width: 100%;
+	background: #f0f0f0;
+	color: #555;
+	text-align: left;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+	
+	
+  }
+  nav >ul >li >ul {
+	position: absolute;
+	border: 0.2em solid 1b17d1;
+	display: none;
+	z-index: 999;
+  }
+  nav >ul >li >ul >li >ul,
+  nav >ul >li >ul >li >ul>li>ul {
+	position: absolute;
+	left: 100%;
+	width: 170px;
+	top: 0px;
+	display: none;
+	z-index: 999;
+	border: 0.1em solid #08073f;
+	-webkit-animation: threeD.1s;
+	  /* Chrome, Safari, Opera */
+	  
+	animation: threeD .1s;
+  }
+  nav >ul >li:hover >ul,
+  nav >ul >li >ul >li:hover >ul,
+  nav >ul >li >ul >li>ul>li:hover ul {
+	display: block;
+	  
+  }
+  nav li {
+	position: relative;
+  }
+  
+  nav >ul >li >ul >li {
+	width: 140px
+  }
+  nav >ul >li:after {
+	content: '';
+	height: 2px;
+	width: 2px;
+	background: #000;
+	color: #fff;
+	opacity: 0;
+	bottom: 0px;
+	left: 0px;
+	position: absolute;
+  }
+  nav >ul >li:hover:after {
+	content: '';
+	opacity: 1;
+	height: 3px;
+	width: 100%;
+	transition: 0.5s;
+  }
+  @keyframes threeD {
+	0% {
+		transform: perspective( 400px) rotateY( 0deg);
+		opacity: 0;
+		left: 150%;
+		top: 150%;
+	}
+	20% {
+		transform: perspective( 400px) rotateY( -45deg);
+		opacity: 0.2;
+		left: 140%;
+		top: 140%;
+	}
+	40% {
+		transform: perspective( 400px) rotateY( -45deg);
+		opacity: 0.4;
+		left: 130%;
+		top: 130%;
+	}
+	60% {
+		transform: perspective( 400px) rotateY( -45deg);
+		opacity: 0.6;
+		left: 120%;
+		top: 120%;
+	}
+	80% {
+		transform: perspective( 400px) rotateY( -45deg);
+		opacity: 0.8;
+		left: 110%;
+		top: 110%;
+	}
+	100% {
+		transform: perspective( 400px) rotateY( -45deg);
+		left: 100%;
+		top: 100%;
+		opacity: 1;
+	}
+  }
+  .sticky+.content {
+	padding-top: 60px;
+}
+
+style {
+	background-blend-mode: color;
+}
+* {
+  box-sizing: border-box;  }
+
+  header {
+	width: 100%;
+  }
+  #nextPreviousButtons {
+	bottom: -1;
+	text-align: center;
+  
+  }
+  #nextPreviousButtons a{
+	text-decoration: none;
+	display: inline-block;
+	padding: 8px 16px;
+	bottom: 0%;
+	}
+	#nextPreviousButtons a:hover {
+	  background-color: rgb(124, 122, 122);
+	color: black;
+	}
+	.previous {
+	  background-color: #f1f1f1;
+	  color: black;
+	  
+	}
+	
+	.next {
+	  background-color: #f1f1f1;
+	  color: rgb(0, 0, 0);
+	}
+	hr {  border-style: none none dotted; color: #b9afafd7;border-width: 3px; }

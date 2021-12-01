@@ -1,30 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
-</head>
-<body>
-    <header class="Graphs">
 
-		<ul class="Navigation" id="navig">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Searching">
+    <figure class="textover" id="search">
+      <img src="./images/bg4.jpg" id="bg" alt="">
+      <h1>&emsp;&ensp;Graphs</h1>
+      <h2>Introduction to Graphs</h2>
+      <p>
+        A graph can be defined as group of vertices and edges that are used to connect these vertices.<br> A graph can be seen as a cyclic tree, where the vertices (Nodes) maintain any complex relationship<br>
+         among them instead of having parent child relationship.<br>
+        <br>A graph G can be defined as an ordered set G(V, E) where V(G) represents the set of vertices and <br>
+         E(G) represents the set of edges which are used to connect these vertices.
+        <span id="dots">...<br><br></span><span id="more"><br><br><strong>Directed and Undirected Graph:</strong><br><br>
+          In a directed graph, edges form an ordered pair. Edges represent a specific path from some vertex A<br> to another vertex B. Node A is called initial node while node B is called terminal node.<br>
+       <br>
+      In an undirected graph, edges are not associated with the directions with them. If an edge exists <br>between vertex A and B then the vertices can be traversed from B to A as well as A to B.<br><br> </span>
+
+
+        <button onclick="toggleText()" id="textButton">Read more</button>
+        <br><br> The applications of graphs are:  <br> <br>
+        1.<strong style="color:rgb(226, 186, 25);"> <em> Traversal: </em> </strong> It refers to the process of visiting each vertex of the graph.<br> For example:&ensp;
+
+        <a href="dfs.html" style="color:aquamarine;" rel="no opener"><strong> <u>
+
+
+
+              DFS </strong> </a> 
+        </u>,<a href="bfs.html" style="color:aquamarine;" rel="no opener"><strong> <u>
+
+
+
+          BFS </strong> </a> <br>
+    </u>
+
+
+        <br>2.<strong style="color:rgb(226, 186, 25);"><em> Shortest-reliable Path : </strong></em> Finding a path between two vertices (or nodes) in a graph <br>such that the sum of the weights of its constituent edges is minimized.<br>
+        For example:&ensp; <a href="floyd.html" style="color: aquamarine;" rel="no opener"><Strong> <u>
+
+             Floyd Warshall</Strong></a> <br>
+        </u>
+      </p>
+
+
+    </figure>
+
+  </header>
+
+  <!--<ul class="Navigation" id="navig">
 			<li class="inner">
 				<a  href="index.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()" ><strong> Home </strong></a>
 
 			</li>
 			<li class="inner">
-				<a href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
+				<a class="active" href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
 				
 			</li>
 			<li class="inner">
 				<a href="sorting.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Sorting Algoritms </strong></a>
 			</li>
 			<li class="inner">
-				<a class="active" href="graphs.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Graphs </strong></a>
+				<a href="graphs.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Graphs </strong></a>
 
 			</li>
 			<li class="inner">
@@ -32,6 +112,7 @@
 
 			</li>
 			
-		</ul>
+		</ul>-->
 </body>
+
 </html>

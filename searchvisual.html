@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching visualizer</title>
+</head>
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">Searching Algorithms</h1>
+    </div>
+    
+    <div class="container">
+      
+        <div class="Search" >
+            <h2>Linear Search</h2>
+            <div class="linear">
+                <div class="linearSetting">
+                    <div class="linear"><h4>Elements</h4> <select name="noe" id="lsnoe">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                    </select></div>
+                    <br><div class="linear"><h4>speed</h4> <select name="speed" id="lsspeed">
+                        <option value="2">fast</option>
+                        <option value="1">slow</option>
+                    </select></div>
+                  <br>  <div class="linear"><h4>key </h4><input type="number" name="key" id="linearkey"></div>
+                <br>    <button id="linearStartBtn">Start</button>
+                    <button id="linearResetBtn">Reset</button>
+                </div>
+                <div class="linearAlgo">
+                    <div class="array">
+                      
+                    </div>
+                    <div class="linear">
+                        <h3>Status :</h3> <h3 id="linearStatus">Waiting to start</h3>
+                    </div>
+                </div>
+            </div>
+            <h2>Binary Search</h2>
+            <div class="linear">
+                <div class="linearSetting">
+                    <div class="linear"><h4>Elements</h4> <select name="noe" id="bsnoe">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                    </select></div>
+                  <br>  <div class="linear"><h4>speed</h4> <select name="speed" id="bsspeed">
+                        <option value="2">fast</option>
+                        <option value="1">slow</option>
+                    </select></div>
+                  <br>  <div class="linear"><h4>key </h4><input type="number" name="key" id="binarykey"></div>
+                   <br> <button id="BinaryStartBtn">Start</button>
+                    <button id="BinaryResetBtn">Reset</button>
+                </div>
+                <div class="BinaryAlgo">
+                    <div class="Binaryarray">
+                      
+                    </div>
+                    <div class="linear">
+                        <h3>Status :</h3> <h3 id="BinaryStatus">Waiting to start</h3>
+                    </div>
+                </div>
+            </div>
+            <div id="nextPreviousButtons">
+
+
+
+              <br>
+                <br><a href="visualizer.html" class="next">Next &raquo; </a>
+              </div>
+            
+        </div>
+        </div>
+        
+  </header>
+    <script src="LinearSearch.js"></script>
+    <script src="BinarySearch.js"></script>
+</body>
+</html>

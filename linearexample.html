@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Linear Search</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Examples</h1>
+      <h2><br>Code Example: (in C)</h2><br>
+      <p> <code>
+        &emsp;&emsp;// Linear Search in C <br>
+
+#include &lt;stdio.h&gt; <br>
+
+int search(int array[], int n, int x)<br> 
+{<br>
+  
+  &emsp;// Going through array sequencially
+  <br>&emsp;for (int i = 0; i < n; i++)<br>
+    &emsp;&emsp;if (array[i] == x)<br>
+      &emsp;&emsp;&emsp;return i;<br>
+  &emsp;return -1;<br>
+}<br>
+
+int main()<br> {<br>
+
+  &emsp;&emsp;int array[] = {2, 4, 0, 1, 9};<br>
+  &emsp;&emsp;int x = 1;<br>
+  &emsp;&emsp;int n = sizeof(array) / sizeof(array[0]);<br>
+
+  &emsp;&emsp;int result = search(array, n, x);<br>
+
+  if (result == -1)<br>
+   {<br> &emsp;&emsp;printf("Element not found")<br>
+}<br>else <br>
+{<br>printf("Element found at index: %d", result);
+<br>}
+
+</code></p>
+      <h3>Output: </h3><br>
+      <p><code>
+  Element found at index: 3 <br>
+</code></p>
+      <h2>Applications:</h2>
+
+      <br>
+      <ol>
+        <li><span> It can be applied to both single-dimensional and multi-dimensional arrays.</span></li>
+        <li><span> It is easy to implement and effective when the array contains only a few elements.
+          </span></li>
+        <li><span> It is also efficient when the search is performed to fetch a single search in an
+            unordered-List.</span></li>
+        <br>
+      </ol><br>
+
+      <div id="nextPreviousButtons">
+
+
+        <a href="linearcode.html" class="previous"> &laquo; Previous</a>
+
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="linearoverview.html">Overview</a></li>
+        <li><a href="linearimplementation.html">Implementation</a></li>
+        <li><a href="searchvisual.html">Visualizer</a></li>
+        <li><a href="linearcode.html">Algorithm - Analysis</a></li>
+        <li><a href="linearexample.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

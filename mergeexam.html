@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Merge Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Examples</h1>
+      <h2><br>Code Example: (in C)</h2><br>
+      <p> <code>
+        &emsp;&emsp;// Merge Sort in C <br>
+
+#include &lt;stdio.h&gt; <br>
+#define max 10<br><br>
+int a[11] = { 10, 14, 19, 26, 27, 31, 33, 35, 42, 44, 0 };<br>
+int b[10];<br>
+
+void merge(int low,int mid,int high)<br> 
+{<br>
+  
+  &emsp;int l1,l2,i;
+  <br>&emsp;for (l1=low,l2=mid+1,i=low; l1&lt;=mid && l2&lt;=high;i++)<br>
+  &emsp;{<br>
+    &emsp;&emsp;if (a[l1]&lt;=a[l2])<br>
+      &emsp;&emsp;&emsp;b[i]=a[l1++];<br>
+  &emsp;&emsp;else<br>
+  &emsp;&emsp;&emsp;b[i]=a[l2++];<br>
+  &emsp;}<br><br>
+  &emsp;while(l1&lt;mid)<br>
+  &emsp;&emsp;b[i++] = a[l1++];
+  <br><br>
+  &emsp;while(l2&lt;high)<br>
+  &emsp;&emsp;b[i++] = a[l2++];<br>
+  <br><br>
+  &emsp;for(i=low;i&lt;=high;i++)<br>
+  &emsp;&emsp;a[i]=b[i];<br>
+}<br><br>
+<br>
+void merge_sort(int low,int high)<br>
+{<br>
+    &emsp;int mid;<br>
+    &emsp;if(low&lt;high)<br>
+    &emsp;{<br>
+        &emsp;&emsp; mid = (low + high) / 2;<br>
+        &emsp;&emsp;merge_sort(low, mid);<br>
+        &emsp;&emsp;merge_sort(mid+1, high);<br>
+        &emsp;&emsp;merge(low, mid, high);<br>
+        &emsp;}<br>
+        &emsp;else<br>
+        &emsp;{<br>
+            &emsp;&emsp;return;<br>
+            &emsp;}<br>
+        }<br><br>
+
+
+
+
+int main()<br> {<br>
+
+  
+  &emsp;&emsp;int i;<br>
+
+  &emsp;&emsp;printf("List before sorting\n");<br>
+
+ 
+  &emsp;for(i=0;i&lt;=max;i++)<br>
+   &emsp;{<br> &emsp;&emsp;printf("%d",a[i]);<br>
+   &emsp;&emsp;merge_sort(0,max);<br>
+&emsp;}<br>&emsp;&emsp;printf("List before sorting\n");<br>
+&emsp;for(i=0;i&lt;=max;i++)<br>
+&emsp;{<br> &emsp;&emsp;printf("%d",a[i]);<br>
+&emsp;}<br>
+
+</code></p>
+      <h3>Output: </h3><br>
+      <p><code>
+        List before sorting<br>
+        10 14 19 26 27 31 33 35 42 44 0 <br><br>
+        List after sorting<br>
+0 10 14 19 26 27 31 33 35 42 44<br>
+</code></p>
+      <h2>Advantages:</h2>
+
+      <br>
+      <ol>
+        <li><span> It is more efficient as it is in worst case also the runtime is O(nlogn)</span></li>
+        <li><span> It provides stable sorting.
+          </span></li>
+        
+        <br>
+      </ol><br>
+      <h2>Practical usage of merge sort</h2>
+
+      <br>
+      <ol>
+        <li><span> Merge sort type algorithms allowed large data sets to be sorted on early computers that had small random access memories by modern standards. Records were stored on magnetic tape and processed on banks of magnetic tape drives . Merge sort is implemented with disk drives</span></li>
+        
+        
+        <br>
+      </ol><br>
+
+      <div id="nextPreviousButtons">
+
+
+        <a href="mergecode.html" class="previous"> &laquo; Previous</a>
+
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="mergeoverview.html">Overview</a></li>
+        <li><a href="mergeimplement.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="mergecode.html">Algorithm - Analysis</a></li>
+        <li><a href="mergeexam.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

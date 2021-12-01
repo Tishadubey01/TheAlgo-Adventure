@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">Floyd Warshall</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1><br>
+      <p>
+        Floyd Warshall Algorithm is a famous algorithm.
+        It is used to solve All Pairs Shortest Path Problem.
+        It computes the shortest path between every pair of vertices of the given graph.
+        Floyd Warshall Algorithm is an example of dynamic programming approach.<br>
+        <br><img src="./images/floyd.gif" style="align-self: center;padding-left: 35%;"><br>
+      </p>
+      <h1>Algorithm</h1><br>
+      <pre>
+        <code>
+        Data: A directed weighted graph G(V, E)
+        Result: Shortest path between each pair of vertices in G
+          for each d € V do
+            distance/d]/d] — 0;
+          end
+          for each edge (s, p) € E do
+             distance[s][p] — weight(s, p);
+          end
+          
+        n = cardinality(V);
+          for k = 1 ton do
+            for 1 = 1 ton do
+              for j = 1 ton do
+                if distance/i/[j] > distance/i][k] + distance/k]/j] then
+                  distance/i]/j] — distance[i][k] + distance/[k]/3/;
+                end
+              end
+            end
+          end
+        </code>
+      </pre>
+
+      <h1>Implementation</h1><br>
+      <p>
+        We’re taking a directed weighted graph G(V, E) as an input. And first, we construct a graph matrix from the given graph. This matrix includes the edge weights in the graph.
+
+        Next, we insert 0 in the diagonal positions in the matrix. The rest of the positions are filled with the respective edge weights from the input graph.
+        
+       <br> Then, we need to find the distance between two vertices. While finding the distance, we also check if there’s any intermediate vertex between two picked vertices. If there exists an intermediate vertex then we check the distance between the selected pair of vertices which goes through this intermediate vertex.
+        
+        <br>If this distance when traversing through the intermediate vertex is less then the distance between two picked vertices without going through the intermediate vertex, we update the shortest distance value in the matrix.
+        
+        <br>The number of iterations is equal to the cardinality of the vertex set. The algorithm returns the shortest distance from each vertex to another in the given graph.
+      </p>
+      <h1>Time Complexity</h1>
+      <br>
+      <ol>
+        <li>
+          <span>
+            Floyd Warshall Algorithm consists of three loops over all the nodes.
+          </span>
+        </li>
+        <li>
+          <span>The inner most loop consists of only constant complexity operations</span>
+        </li>
+        <li>
+          <span>
+            Hence, the asymptotic complexity of Floyd Warshall algorithm is <strong>O(n³)</strong>
+          </span>
+        </li>
+
+      </ol>
+      <h1>Advantages</h1>
+      <br>
+
+    <p>
+      It is extremely simple and easy to implement.The Floyd-Warshall algorithm helps in determining all the shortest paths in a graph with positive or negative weight edges. It is known for its simplicity.
+
+    </p>
+  </div>
+</div>
+</header>
+</body>
+
+</html>

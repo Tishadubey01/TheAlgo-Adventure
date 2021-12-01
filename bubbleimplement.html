@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Bubble Sort</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+            <h1>Implementation</h1>
+            <p>Suppose we are trying to sort the elements in ascending order: <br>
+            
+            <div id="step1">
+
+                <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Start with the first element present at an index equal to zero and compare the current element with the next element present in the array.
+                </em><br>
+                <br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> If the current element is greater than the next element swaps them.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> If the current element is less than the next element, move to the next element. Repeat Step 1.</em> <br>
+                       
+<br>Consider the given array A <br>
+<br><strong style="color:rgb(47, 122, 184);"> First Iteration :</strong> 
+<ol>
+    <li><span>
+        Starting from the first index, compare the first and the second elements.
+    </span></li>
+    <li><span>
+        If the first element is greater than the second element, they are swapped.
+    </span></li>
+    <li><span>
+        Now, compare the second and the third elements. Swap them if they are
+not in order.
+    </span></li>
+    <li><span>
+        The above process goes on until the last element.
+    </span></li>
+
+</ol>
+<br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/bubble1.png">
+
+        <br>
+        <br><strong style="color:rgb(47, 122, 184);"> Remaining Iterations :</strong> 
+        <ol>
+            <li><span>
+                The same process goes on for the remaining iterations.
+After each iteration, the largest element among the unsorted elements is placed
+at the end.
+            </span></li>
+            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/bubble2.png">
+
+        <br>
+            <li><span>
+                In each iteration, the comparison takes place up to the last unsorted element.
+            </span></li>
+            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/bubble3.png">
+
+        <br>
+            <li><span>
+                The array is sorted when all the unsorted elements are placed at their correct
+positions.
+            </span></li>
+            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/bubble4.png">
+
+        <br>
+            <li><span>
+                Hence, this is the sorted array.
+            </span></li>
+        
+        </ol> </div>
+
+
+
+</p>
+
+
+
+            <br><br>
+            <div id="nextPreviousButtons">
+
+
+                <a href="bubbleoverview.html" class="previous"> &laquo; Previous</a>
+                <a href="bubblecode.html" class="next">Next &raquo;</a>
+            </div>
+        </div>
+
+
+        <div id="sidebar">
+            <h1>Table of Contents</h1>
+            <ul class="sidemenu">
+                <li><a href="bubbleoverview.html">Overview</a></li>
+                <li><a href="bubbleimplement.html">Implementation</a></li>
+                <li><a href="visualizer.html">Visualizer</a></li>
+                <li><a href="bubblecode.html">Algorithm - Analysis</a></li>
+                <li><a href="bubbleexample.html">Examples</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+   
+</body>
+
+</html>

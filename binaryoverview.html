@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+        <div id="wrap">
+
+            <h1 id="logo-text">Binary Search</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+
+            <h1>Overview</h1><br>
+            <p> Binary search is a fast search algorithm.It is also known as half-interval search.
+                <br><br> This
+                search algorithm works on the principle of divide and conquer. For this algorithm to
+                work properly, the data collection should be in the sorted form.
+                <br> <br>Binary search looks for a particular item by comparing the middle most item of the
+                collection. If a match occurs, then the index of item is returned. If the middle item is
+                greater than the item, then the item is searched in the sub-array to the left of the
+                middle item. Otherwise, the item is searched for in the sub-array to the right of the
+                middle item. This process continues on the sub-array as well until the size of the
+                subarray reduces to zero.<br><br> For example, Given a sorted array of 10 integers. We need to find the
+                position of element with the value 92.
+                Since it is 10 digit array, we find the mid index to be 10/5 and hence the element on that index will be
+                75.Since 75 is less than 92, all the elements before it and including it are rejected for further
+                iteration
+                Now, taking the mid from the remaining array,the mid element now is 78 which is still less than 92 and
+                hence all the elements are rejected before and including it.
+                The mid element now becomes 89 which is less than 92 and is rejected.
+                The last one remaining is checked
+                which turns out to be the element we are finding, i.e 92
+                and hence we find the requied position of the element with value 92.
+
+
+                <br><br><img src="./images/binarysearchsmall.gif" style="align-self: center;padding-left: 35%;">
+                <br><br>Binary search is used to quickly find a value in a sorted sequence.It halves the searchable
+                items and thus reduces the count of comparisons.
+                to be made to very less numbers
+            </p>
+            <div id="nextPreviousButtons">
+
+
+
+                <a href="binaryimplementation.html" class="next">Next &raquo;</a>
+            </div>
+        </div>
+
+        <div id="sidebar">
+            <h1>Table of Contents</h1>
+            <ul class="sidemenu">
+                <li><a href="binaryoverview.html">Overview</a></li>
+                <li><a href="binaryimplementation.html">Implementation</a></li>
+                <li><a href="searchvisual.html">Visualizer</a></li>
+                <li><a href="binarycode.html">Algorithm - Analysis</a></li>
+                <li><a href="binaryexample.html">Examples</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+</body>
+
+</html>

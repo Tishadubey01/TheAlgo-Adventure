@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Insertion Sort</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+            <h1>Implementation</h1>
+            <p>The simple steps of achieving the insertion sort are listed as follows -
+
+                <br>
+
+            <div id="step1">
+
+                <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> If the element is the first element,
+                    assume that it is already sorted. Return 1.
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Pick the next element, and
+                        store it separately in a key.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> Now, compare the key with all
+                        elements in the sorted array.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 4 :</strong> <em> If the element in the sorted
+                        array is smaller than the current element, then move to the next element. Else, shift greater
+                        elements in the array towards the right.
+
+                    </em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 5 :</strong> <em> Insert the value.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 6 :</strong> <em> Repeat until the array is
+                        sorted.</em> <br><br>
+                    <hr> <br>
+            </div>
+
+
+            <p>Consider an unsorted array <br></p>
+            <div id="step1">
+
+                <ol>
+                    <li><span>
+                            The first element in the array is assumed to be sorted. Take the
+                            second element and store it separately in key.<br>Compare key with the first element. If the
+                            first element is greater than
+                            key, then key is placed in front of the first element.
+                        </span></li>
+                    <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/insert1.png">
+                    <li><span>
+                        Take the third element and compare it with the elements on the left
+                        of it. Placed it just behind the element smaller than it. If there is no
+                        element smaller than it, then place it at the beginning of the array.
+                        </span></li>
+                    <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/insert2.png">
+                    <li><span>
+                        Similarly, place every unsorted element at its correct position
+                        </span></li>
+                    <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/insert3.png">
+                    
+                    
+                    <li><span>
+                            Finally, we get the sorted array as-
+                        </span></li>
+                    <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/insert4.png">
+                </ol>
+
+
+
+
+
+
+
+                </p>
+
+
+</div>
+
+                <br><br>
+                <div id="nextPreviousButtons">
+
+
+                    <a href="insertover.html" class="previous"> &laquo; Previous</a>
+                    <a href="insertcode.html" class="next">Next &raquo;</a>
+                </div>
+            </div>
+
+
+
+            <div id="sidebar">
+                <h1>Table of Contents</h1>
+                <ul class="sidemenu">
+                    <li><a href="insertover.html">Overview</a></li>
+                    <li><a href="insertimpl.html">Implementation</a></li>
+                    <li><a href="visualizer.html">Visualizer</a></li>
+                    <li><a href="insertcode.html">Algorithm - Analysis</a></li>
+                    <li><a href="insertexam.html">Examples</a></li>
+
+                </ul>
+            </div>
+
+    </header>
+
+</body>
+
+</html>

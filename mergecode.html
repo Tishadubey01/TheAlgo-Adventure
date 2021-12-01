@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Merge Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Algorithm - Analysis</h1>
+
+      <br>
+      <h2> &emsp;Algorithm: </h2>
+      <p> <code>
+        procedure merge_sort(var a as array) <br>
+        &emsp; if (n==1) return a<br>
+        &emsp; var l1 as array = a[0] ... a[n/2]<br>
+        &emsp; var l2 as array = a[n/2+1] ... a[n]<br>
+        &emsp; l1 = merge_sort(l1)<br>
+        &emsp; l2 = merge_sort(l2)<br>
+&emsp; return merge(l1,l2)
+<br>end procedure
+<br>
+<br> procedure merge(var a as array, var b as array)<br> 
+&emsp; var c as array <br>
+&emsp;while ( a & b have elements)<br>
+&emsp;&emsp;if(a[0] > b[0])<br>
+&emsp;&emsp;&emsp; add a[0] to the end of c <br>
+&emsp;&emsp;&emsp; remove b[0] from b<br>
+&emsp;&emsp;else<br>
+&emsp;&emsp;&emsp;add a[0] to the end of c<br>
+&emsp;&emsp;&emsp;remove a[0] from a <br>
+&emsp;&emsp;end if<br>
+&emsp;end while<br>
+<br>
+&emsp;while (a has elements)<br>
+&emsp;&emsp;add a[0] to the end of c <br>
+&emsp;&emsp;remove a[0] from a<br>
+&emsp;end while <br>
+&emsp;while (<b></b> has elements)<br>
+&emsp;&emsp;add b[0] to the end of c <br>
+&emsp;&emsp;remove b[0] from b<br>
+&emsp;end while <br>
+<br>
+&emsp; return c<br>
+end procedure<br>
+
+
+
+   
+      </code></p>
+      <h2>&emsp;Pseudo Code</h2>
+      <p><code>
+        void merge(int *Arr, int start, int mid, int end) <br>
+{<br>
+    &emsp;int temp[end-start+1];<br>
+    &emsp;int i=start,j=mid+1,k=0;<br>
+    &emsp;&emsp;while(i&lt;=mid && j&lt;=end)<br>
+    &emsp;&emsp;{ <br>
+        &emsp;&emsp;&emsp;if (Arr[i] &lt;= Arr[j])<br> 
+        &emsp;&emsp;&emsp;{<br>       
+            &emsp;&emsp;&emsp;&emsp;temp[k]=Arr[i];<br> 
+        &emsp;&emsp;&emsp;}<br>
+        &emsp;&emsp;&emsp;else<br>
+        &emsp;&emsp;&emsp;{<br>
+            &emsp;&emsp;&emsp;&emsp;temp[k]=Arr[j];<br>
+            &emsp;&emsp;&emsp;&emsp;k++;j++;<br>
+            &emsp;&emsp;&emsp;}<br>
+    &emsp;&emsp;}<br>
+    &emsp;&emsp;while(i&lt;=end) <br>
+    &emsp;&emsp;{<br>
+        &emsp;&emsp;&emsp;temp[k]=Arr[i];<br>
+        &emsp;&emsp;&emsp;k++;i++;<br>
+        &emsp;&emsp;}<br>
+        &emsp;&emsp;while(j&lt;=end) <br>
+    &emsp;&emsp;{<br>
+        &emsp;&emsp;&emsp;temp[k]=Arr[j];<br>
+        &emsp;&emsp;&emsp;k++;j++;<br>
+        &emsp;&emsp;}<br>
+        &emsp;&emsp;for(i=start;i&lt;=end;i++)<br>
+        &emsp;&emsp;{<br>
+            &emsp;&emsp;&emsp;Arr[i]=temp[i-start];<br>
+            &emsp;&emsp;}<br>
+
+}<br><br>
+void merge_sort(int *Arr, int start, int end)<br>
+{<br>
+    &emsp;if(start &lt; end)<br>
+    &emsp;{<br>
+        &emsp;&emsp;int mid=(start+end)/2;<br>
+        &emsp;&emsp;merge_sort(Arr,start,mid);<br>
+        &emsp;&emsp;merge_sort(Arr,mid+1,end);<br>
+        &emsp;&emsp;merge(Arr,start,mid,end);<br>
+        &emsp;}<br>
+    }<br>
+
+      </code></p>
+      <h2> &ensp;Time Complexity Analysis: </h2>
+      <p> Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation.
+
+         <br><br>
+        <strong>T(n) = 2T(n/2) + O(n)<br></strong>
+        The solution of the above recurrence is O(nLogn). The list of size N is divided into a max of Logn parts, and the merging of all sublists into a single list takes O(N) time, the worst-case run time of this algorithm is O(nLogn)<br>
+      </p>
+      <ol>
+        <li><span> Best Case Time Complexity:<strong>  O(n*log n)</strong></span></li>
+        <li><span> Worst Case Time Complexity:<strong>  O(n*log n)</strong>
+
+        </span></li>
+        <li><span> Average Time Complexity: <strong>  O(n*log n)</strong></span></li>
+        <br>
+      </ol>
+      <br>
+      <p>The time complexity of MergeSort is O(n*Log n) in all the 3 cases (worst, average and best) as the mergesort always divides the array into two halves and takes linear time to merge two halves.
+        
+      <h2> Space Time Complexity:</h2>
+      <ol>
+        <li><span> Auxiliary Space: O(n)</span></li>
+        <li><span> Sorting In Place: No
+
+        </span></li>
+        <li><span> Algorithm : Divide and Conquer</span></li>
+        <br>
+      </ol>
+      <br>
+      <div id="nextPreviousButtons">
+
+
+        <a href="mergeimplement.html" class="previous"> &laquo; Previous</a>
+        <a href="mergeexam.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="mergeoverview.html">Overview</a></li>
+        <li><a href="mergeimplement.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="mergecode.html">Algorithm - Analysis</a></li>
+        <li><a href="mergeexam.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

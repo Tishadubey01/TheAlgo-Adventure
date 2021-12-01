@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Linear Search</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Implementation</h1>
+      <p> <br>Linear search is implemented using following steps...<br><br>
+        Consider the following list of elements and the element to be searched...<br><br>
+        &emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+          src="./images/linear (1).png"><br><br>
+
+      <div id="step1">
+
+        <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Read/accept the search element (Key element)
+          from the user. </em><br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp; Given key element = 3.<br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Compare the key element with the first
+          element in the list. </em><br>
+        <br>&emsp; &MediumSpace;&emsp;In this the key element(3) is compared with first element(5)<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+          src="./images/linear (2).png"> <br>
+
+        <br>
+        <hr><br> <strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> If both are matched, then display
+          "Element found!!!" and terminate the function.</em><br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 4 :</strong><em> If both not matched, then compare key
+          element with the next element in the list.</em><br>
+        <br> &emsp; &MediumSpace;&emsp; Both elements did not matched. So move to next element.<br>
+        <br>
+        <hr><br> <strong style="color:rgb(47, 122, 184);"> Step 5 :</strong> <em>Repeat steps 3 and 4 until key element
+          is compared with last element in the list.</em> <br>
+        <br>&emsp; &MediumSpace;&emsp; Now, the key element(3) is compared with second element(4)<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+          src="./images/linear (3).png"> <br>
+        &emsp; &MediumSpace;&emsp; Both elements did not matched. So move to next element.<br>
+        <br>&emsp; &MediumSpace;&emsp; Now again, the key element(3) is compared with third element(3)<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/linear (4).png">
+        <br>
+        &emsp; &MediumSpace;&emsp; Both the elements matched. So, we display the element found at index 2 i.e., third
+        element.<br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 6 :</strong> <em> If last element in the list also
+          doesn't match, then display "Element not found!!!" and terminate the function.</em> <br>
+      </div>
+      </p>
+      <div id="nextPreviousButtons">
+
+
+        <a href="linearoverview.html" class="previous"> &laquo; Previous</a>
+        <a href="linearcode.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="linearoverview.html">Overview</a></li>
+        <li><a href="linearimplementation.html">Implementation</a></li>
+        <li><a href="searchvisual.html">Visualizer</a></li>
+        <li><a href="linearcode.html">Algorithm - Analysis</a></li>
+        <li><a href="linearexample.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

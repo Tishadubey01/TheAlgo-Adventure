@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Selection Sort</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+            <h1>Implementation</h1>
+            <p>Selection sort is a sorting algorithm that selects the smallest element from an unsorted list
+                in each iteration and places that element at the beginning of the unsorted list. <br>
+
+            <div id="step1">
+
+                <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Select the first element of the list
+                    (i.e., Element at first position in the list).
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Compare the selected element
+                        with all the other elements in the list.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> In every comparision, if any
+                        element is found smaller than the selected element (for Ascending order), then both are
+                        swapped.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 4 :</strong> <em> Repeat the same procedure with
+                        element in the next position in the list till the entire list is sorted.</em> <br><br>
+                    <hr> <br>
+            </div>
+
+
+            <p>Consider an unsorted array <br></p>
+
+
+            <ol>
+                <li><span>
+                        Set the first element as minimum.
+                    </span></li>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select1.png">
+                <li><span>
+                        Compare minimum with the second element. If the second element is
+                        smaller than minimum, assign the second element as minimum.<br>
+                        <br>Compare minimum with the third element. Again, if the third element is
+                        smaller, then assign minimum to the third element otherwise do
+                        nothing. The process goes on until the last element.
+                    </span></li>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select2.png">
+                <li><span>
+                        After each iteration, minimum is placed in the front of the unsorted list.
+                    </span></li>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select3.png">
+                <li><span>
+                        For each iteration, indexing starts from the first unsorted element.
+                        The same process keeps repeating until all the elements are placed at their
+                        correct positions.
+                    </span></li>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select4.png">
+                <li><span>
+                        A pictorial representation of the entire sorting process.
+
+                    </span></li>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select5.png"><br>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select6.png"><br>
+                <li><span>
+                        Finally, we get the sorted array as-
+                    </span></li>
+                <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp;&emsp;
+                &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                    src="./images/select7.png">
+            </ol>
+
+
+
+        
+
+
+
+        </p>
+
+
+
+        <br><br>
+        <div id="nextPreviousButtons">
+
+
+            <a href="selectoverview.html" class="previous"> &laquo; Previous</a>
+            <a href="selectcode.html" class="next">Next &raquo;</a>
+        </div>
+        </div>
+
+
+        <div id="sidebar">
+            <h1>Table of Contents</h1>
+            <ul class="sidemenu">
+                <li><a href="selectoverview.html">Overview</a></li>
+                <li><a href="selectimplement.html">Implementation</a></li>
+                <li><a href="visualizer.html">Visualizer</a></li>
+                <li><a href="selectcode.html">Algorithm - Analysis</a></li>
+                <li><a href="selectexam.html">Examples</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+
+</body>
+
+</html>

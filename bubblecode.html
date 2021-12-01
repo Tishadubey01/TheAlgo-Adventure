@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Bubble Sort</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+
+            <h1>Algorithm - Analysis</h1>
+
+            <br>
+            <h2>&emsp;Optimized Bubble Sort</h2>
+            <p> Bubble sort complexities remain O(N²) in all cases including sorted array. We can reduce the time
+                complexity to O(N) if the array is already sorted.Also,we need to introduce a flag variable to stop the
+                bubble sort as soon as it becomes sorted.
+                <br><br>The flag variable is initialized as true in every iteration and in for loop if array goes in for
+                swapping we will initialize it to false. But if no swapping takes place in the inner loop then its value
+                will remain true and we will have an if condition after the nested loop that will check the flag value
+                and if flag value remains true, we will break.
+            </p>
+            <h2> &emsp;Algorithm: </h2>
+            <p><code>
+        begin BubbleSort (list) <br>
+        &ensp; // list is an array of n elements.<br>
+        &ensp; //swap function swaps the values of the given array elements.<br>
+             &ensp; flag=false<br>
+             &emsp; for i=0 to n-1 <br>
+             &emsp; for j=0 to n-i-1<br>
+             &emsp;&emsp; if list[j] > list[j+1] <br>
+             &emsp;&emsp;&emsp;swap(list[j], list[j+1])<br>
+             &emsp;&emsp;&emsp;flag=true<br>
+             &emsp;&emsp; end if <br>
+             &emsp;&emsp;if (!flag) <br>
+             &emsp;&emsp; break <br>
+             &emsp;end for<br>
+             
+           
+        
+        end BubbleSort<br>
+    
+      </code></p>
+            <h2> &emsp;Pseudo Code: </h2>
+
+            <p><code>
+BubbleSort(int A[ ], int n)<br>
+{<br>
+    &emsp;for(int i=0; i &lt; n-1; i++)<br>
+    &emsp;{ <br>
+        &emsp;&emsp;int flag=0;<br>
+        &emsp;&emsp;for(int j=0; j &lt; n-i-1; j++)<br>
+
+        &emsp;&emsp;{<br>       
+        &emsp;&emsp;&emsp;if(A[j] > A[j+1]))<br> 
+        &emsp;&emsp;&emsp;{<br>
+        &emsp;&emsp;&emsp;&emsp;int temp = A[j];<br>
+        &emsp;&emsp;&emsp;&emsp;A[j] = A[j+1];<br>
+        &emsp;&emsp;&emsp;&emsp;A[j+1] = temp;<br>
+        &emsp;&emsp;&emsp;&emsp;flag=1;<br> 
+        &emsp;&emsp;&emsp;}<br>
+        &emsp;&emsp;}<br>
+        &emsp;&emsp;if(flag==0)<br>
+        &emsp;&emsp;&emsp;break;<br>
+        &emsp;} <br>
+        return A; <br>
+    }<br>
+       
+     </code></p>
+            <h2>&emsp;Time Complexity Analysis: </h2>
+            <p> Optimized Bubble Sort time complexity analysis is done in the following ways:- <br><br>
+                <strong> Best Case [ O(N) ]<br></strong>
+                In the best possible case,
+            </p>
+            <ol>
+                <li><span>When the given array is already sorted</span></li> <br>
+            </ol>
+            <p>We traverse the list looking for possible swaps. But as the array is already sorted, there will be no
+                swaps. Here we’ll not continue the iterations anymore. Instead, we’ll come out of the loop and the
+                algorithm terminates. In this way, we don’t have to complete all the iterations.
+                If the given array is sorted, we traverse the array once.<br> So the time complexity in the best case
+                would be <strong>O(N)</strong>
+
+                <hr><br>
+            <p><strong> Worst Case [ O(N² ]<br></strong>
+                In the worst possible case, </p>
+            <ol>
+                <li><span>The array is reversely sorted.
+                    </span></li>
+                <p>So we need to do (N - 1) comparisons in the first iteration, (N - 2) in the second interactions, and
+                    so on.<br>
+                    Hence, the time complexity of the bubble sort in the worst case would be <strong>O(N²)</strong>.
+            </ol>
+            <hr> <br>
+            <p><strong> Average Case [ O(N² ]<br></strong>
+                In the average case, </p>
+            <ol>
+                <li>
+                    <span>It occurs when the elements of the array are in jumbled order (neither ascending nor
+                        descending).</span>
+                </li>
+                <p>When i=1, no comparisons are made by the program. When i=2, one comparison is made by the program.
+                    When i=3, two comparisons are made, and so on.<br>
+                    Thus, in an array of length N, it does 1+2+3+4+.....+(N-2)+(N-1) comparisons.<br>
+                    =N*(N-1)/2 <br>
+                    =O(N²) comparisons.<br>
+                    Hence,the time complexity of the bubble sort in the average case would be <strong>O(N²)</strong>.
+                </p>
+            </ol>
+
+            <h2>&emsp;Space Complexity Analysis:</h2>
+            <ol>
+                <li>
+                    <span>
+
+                        The algorithm only requires auxiliary variables for flags, temporary variables.
+                    </span>
+                </li>
+                <li>
+                    <span>No auxiliary space is required in bubble sort implementation.</span>
+                </li>
+                <li>
+                    <span>
+                        Thus, the space complexity is O(1)</p>
+
+                    </span>
+                </li>
+            </ol>
+
+
+            <br><br>
+            <div id="nextPreviousButtons">
+
+
+                <a href="bubbleimplement.html" class="previous"> &laquo; Previous</a>
+                <a href="bubbleexample.html" class="next">Next &raquo;</a>
+            </div>
+        </div>
+
+
+        <div id="sidebar">
+            <h1>Table of Contents</h1>
+            <ul class="sidemenu">
+                <li><a href="bubbleoverview.html">Overview</a></li>
+                <li><a href="bubbleimplement.html">Implementation</a></li>
+                <li><a href="visualizer.html">Visualizer</a></li>
+                <li><a href="bubblecode.html">Algorithm - Analysis</a></li>
+                <li><a href="bubbleexample.html">Examples</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+   
+</body>
+
+</html>

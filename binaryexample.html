@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Binary Search</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Examples</h1>
+      <h2><br> Iterative Code Example: (in C)</h2><br>
+      <p> <code>
+        &emsp;&emsp;// Binary Search in C <br>
+
+#include &lt;stdio.h&gt; <br>
+
+int iterativeBinarySearch(int array[], int start_index, int end_index, int element)<br> 
+{<br>
+  
+ 
+  <br>&emsp;while (start_index&lt;= end_index)<br>
+  &emsp;&emsp;{<br>
+    &emsp;&emsp;int middle = start_index + (end_index- start_index )/2;<br>
+    
+        &emsp;&emsp;&emsp;if (array[middle] == element)<br>
+        &emsp;&emsp;&emsp;&emsp;return middle;<br>
+        &emsp;&emsp;&emsp;if (array[middle]&lt;element)<br>
+        &emsp;&emsp;&emsp;&emsp;start_index = middle + 1;<br>
+        &emsp;&emsp;&emsp;else<br>
+        &emsp;&emsp;&emsp;&emsp;end_index = middle - 1;<br>
+        &emsp;&emsp;}<br>
+      
+  &emsp;return -1;<br>
+}<br>
+
+int main()<br> {<br>
+
+  &emsp;&emsp;int array[] = {1, 4, 7, 9, 16, 56, 70};<br>
+  &emsp;&emsp;int n = 7;<br>
+  &emsp;&emsp;int element = 16;<br>
+
+  &emsp;&emsp;int found_index = iterativeBinarySearch(array, 0, n-1, element);<br>
+
+  &emsp;if (result == -1)<br>
+   &emsp;{<br> &emsp;&emsp;printf("Element not found")<br>
+&emsp;}<br>&emsp;else <br>
+&emsp;{<br>&emsp;&emsp;printf("Element found at index: %d", found_index);
+<br>&emsp;}<br>}
+
+
+</code></p>
+      <h3>Output: </h3><br>
+      <p><code>
+  Element found at index: 4 <br>
+</code></p>
+      <h2>Applications: </h2>
+      <br>
+      <ol>
+        <li><span> It can be used to solve a broader range of problems, such as locating the next lowest or largest
+            element in an array relative to the target, even if the target is not present in the array. </span></li>
+        <li><span> Except in small arrays, binary search is faster than linear search.
+          </span></li>
+        <li><span> It is also used to create the binary search tree and the B-tree data structures.</span></li>
+        <br>
+      </ol><br>
+      <h2>Real life Examples: </h2>
+      <br>
+      <ol>
+        <li><span> Library </span></li>
+        <p>A library contains thousands of books. Searching for a book linearly is not feasible.
+
+          Books in a library are generally arranged in alphabetical order or by some integer code. Therefore, instead of
+          linearly checking each and every book in the library, we can simply use a binary search to find the book.</p>
+        <li><span> Page Number </span></li>
+        <p>Suppose we want to go to page 345 in a book. We don’t visit every page from 1 to 345. We open any random page
+          on the book and check it’s page number. If the current page number is greater than 345, then 345 is on the
+          left side of the current page. If the current page number is smaller than 345, then 345 is on the right side
+          of the current page. We keep repeating the process until we reach page 345.</p>
+
+        <div id="nextPreviousButtons">
+
+
+          <a href="binarycode.html" class="previous"> &laquo; Previous</a>
+
+        </div>
+    </div>
+
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="binaryoverview.html">Overview</a></li>
+        <li><a href="binaryimplementation.html">Implementation</a></li>
+        <li><a href="searchvisual.html">Visualizer</a></li>
+        <li><a href="binarycode.html">Algorithm - Analysis</a></li>
+        <li><a href="binaryexample.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+  </header>
+
+</body>
+
+</html>

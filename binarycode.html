@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Binary Search</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+
+            <h1>Algorithm - Analysis</h1>
+
+            <br>
+            <h2> &emsp;Algorithm: </h2>
+            <p> <code>
+        procedure binary_search <br>
+
+    Input Sorted array in "a[]" and element to be searched in "x" and size of array in "size" <br>
+    Initialize low=0, high=size-1 <br>
+    Repeat until low>=high <br>
+         &emsp;mid=(low+high)/2 <br>
+         &emsp;&emsp; If a[mid] is equal to x, <br>
+         &emsp;&emsp;&emsp;then, print index value of mid and break<br>
+         &emsp;&emsp;Else <br>
+         &emsp;&emsp;&emsp;If a[mid]&lt;x <br>
+        &emsp;&emsp;&emsp;&emsp; low=mid+1 <br>
+        &emsp;&emsp;&emsp;else <br>
+         &emsp;&emsp;&emsp;&emsp;high=mid-1 <br>
+    Print x not found in the list <br>
+    end procedure<br>
+
+
+      </code></p>
+            <h2> &emsp;Pseudo Code: </h2>
+            <p><code>
+        int binary_search(int low, int high, int key) <br>
+{<br>
+    &emsp;&emsp;while(low&lt;=high)<br>
+    &emsp;&emsp;{ <br>
+        &emsp;&emsp;&emsp;int mid=(low+high)/2;<br>
+        &emsp;&emsp;&emsp;if (a[mid]&lt;key)<br> 
+        &emsp;&emsp;&emsp;{<br>       
+            &emsp;&emsp;&emsp;&emsp;low=mid+1;<br> 
+        &emsp;&emsp;&emsp;}<br>
+        &emsp;&emsp;&emsp;else if (a[mid]>key)<br>
+        &emsp;&emsp;&emsp;{<br>
+            &emsp;&emsp;&emsp;&emsp;high=mid-1;<br>
+            &emsp;&emsp;&emsp;}<br>
+            &emsp;&emsp;&emsp;else<br>
+            &emsp;&emsp;&emsp;{<br>
+                &emsp;&emsp;&emsp;&emsp;return mid;<br>
+                &emsp;&emsp;&emsp;}<br>
+    &emsp;&emsp;}<br>
+    &emsp;return -1; <br>
+}
+      </code></p>
+            <h2>&ensp; Time Complexity Analysis: </h2>
+            <p> Binary Search time complexity analysis is done in the following ways:- <br><br>
+                <strong> Best Case [ O(1) ]<br></strong>
+                In the best possible case,
+            </p>
+            <ol>
+                <li><span> The element to be search is in the middle of the list.</span></li>
+                <li><span> In this case, the element is found in the first step itself and this involves 1
+                        comparison.</span></li>
+                <li><span> Thus in best case, binary search algorithm takes <strong> O(1) operations.</strong></span>
+                </li>
+                <br>
+            </ol>
+            <hr><br>
+            <p><strong> Worst Case [ O(n) ]<br></strong>
+                In the worst possible case, </p>
+            <ol>
+                <li><span> The element is to search is in the first index or last index or not present in the array at
+                        all.</span></li>
+                <li><span> In the former case, the total number of comparisons required is logN comparisons.
+
+
+                    </span></li>
+                <li><span> In the later case, the search terminates in failure with logN comparisons.</span></li>
+                <li><span> Thus in worst case, binary search algorithm takes <strong> O(logN)
+                            operations.</strong></span></li>
+                <br>
+            </ol>
+            <hr> <br>
+            <p><strong> Average Case [ O(logN) ]<br></strong>
+                Let there be N distinct numbers: a1, a2, ..., a(N-1), aN.
+                We need to find element P.<br> There are two cases:</p>
+            <ol>
+                <li><span> Case 1: The element P can be in N distinct indexes from 0 to N-1.
+                    </span></li>
+                <li><span> Case 2: There will be a case when the element P is not present in the list.
+                    </span></li>
+
+                <br>
+            </ol>
+            <p> There are N case 1 and 1 case 2. So, there are N+1 distinct cases to consider in total.
+
+                <br> If element P is in index K, then Binary Search will do K+1 comparisons.
+                <br>This is because:
+
+                <br> The element at index N/2 can be found in 1 comparison as Binary Search starts from middle.
+
+                <br> Similarly, in the 2nd comparisons, elements at index N/4 and 3N/4 are compared based on the result
+                of
+                1st comparison.<br>
+                <br>Therefore, Elements requiring i comparisons: 2^(i-1) where i can vary from 0 to logN
+                <br>Maximum no. of iterations=Number of times N is divided by 2 so that,result is 1 = Comparisons to
+                reach 1st element=logN comparisons.
+                <br>Total number of comparisons = 1 * (1) + 2 * (2) + 3 * (4) + ... + logN * (2^(logN-1))
+                <br>Total number of cases = N+1<br>
+                Therefore, average number of comparisons = ( N * (logN - 1) + 1 ) / (N+1)
+                <br>The dominant term is N * logN / (N+1) which is approximately logN.<br>
+                Thus in average case, binary search algorithm takes <strong> O(logN)
+                    operations.</strong>
+
+
+
+
+
+            </p>
+            <h2>Space Time Complexity: </h2>
+            <ol>
+                <li><span> Iterative implementation <strong> [ O(1) ]</strong>
+                    </span></li>
+                <p> We need two variable to keep track of the range of elements that are to be checked. No other data is
+                    needed.</p>
+            </ol>
+
+            <div id="nextPreviousButtons">
+
+
+                <a href="binaryimplementation.html" class="previous"> &laquo; Previous</a>
+                <a href="binaryexample.html" class="next">Next &raquo;</a>
+            </div>
+        </div>
+
+
+        <div id="sidebar">
+            <h1>Table of Contents</h1>
+            <ul class="sidemenu">
+                <li><a href="binaryoverview.html">Overview</a></li>
+                <li><a href="binaryimplementation.html">Implementation</a></li>
+                <li><a href="searchvisual.html">Visualizer</a></li>
+                <li><a href="binarycode.html">Algorithm - Analysis</a></li>
+                <li><a href="binaryexample.html">Examples</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+
+</body>
+
+</html>

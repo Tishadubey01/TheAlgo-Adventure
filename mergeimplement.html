@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Merge Sort</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+            <h1>Implementation</h1>
+            <p>The concept of Divide and Conquer involves three steps: <br>
+
+            <div id="step1">
+
+                <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Divide the problem into multiple
+                    subproblems.
+                </em><br>
+                <br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Solve the Sub Problems. The idea is
+                    to break down the problem into atomic subproblems, where they are actually solved.</em> <br>
+                <br><strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> Combine the solutions of the
+                    subproblems to find the solution of the actual problem.</em> <br><br>
+                <hr> <br></div>
+
+            <p>So, the merge sort working rule involves the following steps:</p>
+
+                <div id="step1">
+
+                    <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Divide the unsorted array into
+                        subarray, each containing a single element.
+
+                    </em><br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Take adjacent pairs of two
+                        single-element array and merge them to form an array of 2 elements.</em> <br>
+                    <br><strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> Repeat the process till a
+                        single sorted array is obtained.</em> <br></p>
+                    Consider an unsorted array  <br>
+                    <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/merge1.png">
+                    
+                    <ol>
+                        <li><span>
+                            Merge sort first divides the whole array iteratively into equal halves unless the atomic values are achieved. We see here that an array of 8 items is divided into two arrays of size 4.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/merge2.png">
+                        <li><span>
+                            Now we divide these two arrays into halves.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/merge3.png">
+                        <li><span>
+                            We further divide these arrays and we achieve atomic value which can no more be divided.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/merge4.png">
+                        <li><span>
+                           Now, we first compare the element for each list and then combine them into another list in a sorted manner. We see that 14 and 33 are in sorted positions. We compare 27 and 10 and in the target list of 2 values we put 10 first, followed by 27. We change the order of 19 and 35 whereas 42 and 44 are placed sequentially.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/merge5.png">
+                        <li><span>
+                            In the next iteration of the combining phase, we compare lists of two data values, and merge them into a list of found data values placing all in a sorted order.
+
+                        </span></li>
+                        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/merge6.png">
+                        <li><span>
+                            After the final merging, we get the sorted array as-
+                        </span></li>
+                        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                            src="./images/merge7.png">
+                    </ol>
+                    
+
+                    </ol>
+                </div>
+                
+
+
+
+                </p>
+
+
+
+                <br><br>
+                <div id="nextPreviousButtons">
+
+
+                    <a href="mergeoverview.html" class="previous"> &laquo; Previous</a>
+                    <a href="mergecode.html" class="next">Next &raquo;</a>
+                </div>
+            </div>
+
+
+            <div id="sidebar">
+                <h1>Table of Contents</h1>
+                <ul class="sidemenu">
+                    <li><a href="mergeoverview.html">Overview</a></li>
+                    <li><a href="mergeimplement.html">Implementation</a></li>
+                    <li><a href="visualizer.html">Visualizer</a></li>
+                    <li><a href="mergecode.html">Algorithm - Analysis</a></li>
+                    <li><a href="mergeexam.html">Examples</a></li>
+            
+                  </ul>
+            </div>
+
+    </header>
+
+</body>
+
+</html>

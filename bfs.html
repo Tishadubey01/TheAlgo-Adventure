@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">BFS</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1><br>
+      <p>
+        Breadth First Search(BFS) is one type of tree-searching algorithm. The idea is that this algorithm explores nodes in order of their depth. We start out at the root vertex, then explore all of the vertices with depth 1 first, and then vertices with depth 2, and so on and so forth. In other words, there is an order in which the traversal process is performed.
+        <br>
+        <img src="./images/bfs.gif" style="align-self: center;padding-left: 35%;"><br>
+        <h1>Algorithm </h1>
+        
+          <pre>
+            <code>
+              bfs_algorithm {
+                1. create a queue of vertices;
+                2. add root to the queue to start;
+                while queue is not empty {
+                  3. get vertex from front of queue;
+                  4. make sure this vertex has not been visited before;
+                  5. look at it's value and do things as appropriate;
+                  6. add the children of the vertex to the back of the queue;
+                  7. mark the vertex as visited;
+                }
+              }
+            </code>
+          </pre>
+          <h1>Implementation </h1>
+          <p><br>
+
+            Nodes of smaller depth that are closer to the root will be added first to the queue, and so because the queue is a FIFO data structure, these nodes of smaller depth will be visited before nodes that are further away from the root. In this way, you can see that the the BFS traversal algorithm expands its search radius in breadth over time, as the radius of searching away from the root gradually increases over time. This is a characteristic feature of the BFS algorithm.
+<br>BFS will reach any particular vertex with the minimum number of edges from the root source.
+
+          </p>
+        </p>
+      </p>
+      <div id="nextPreviousButtons">
+
+
+
+        <a href="dfs.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>

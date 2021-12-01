@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">Selection Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Visualizer</h1><br>
+      <p>
+        <br> <strong> How Selection Sort Works ? </strong> <br><br>
+        Visualisation helps in better in understanding than programs.<br>
+        <br>
+        This visualization shows how the </p>
+        <div class="Selection">
+            <div class="SelectionSetting">
+                <div class="Selection"><h4>Elements</h4> <select name="noe" id="ssnoe">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                </select></div><br>
+                <div class="Selection"><h4>Speed</h4> <select name="speed" id="ssspeed">
+                    <option value="1.5">fast</option>
+                    <option value="1">slow</option>
+                </select></div><br>
+                <button id="SelectionStartBtn">Start</button>
+                <button id="SelectionResetBtn">Reset</button>
+            </div>
+            <div class="SelectionAlgo">
+                <div class="Selectionarray">
+                  
+                </div>
+                <div class="Selection">
+                    <h3>Status :</h3> <h3 id="SelectionStatus">Waiting to start</h3>
+                </div>
+            </div>
+        </div>
+        
+        <br><br>
+        <div id="nextPreviousButtons">
+
+
+            <a href="selectimplement.html" class="previous"> &laquo; Previous</a>
+            <a href="selectcode.html" class="next">Next &raquo;</a>
+          </div>
+        </div>
+    
+        <div id="sidebar">
+          <h1>Table of Contents</h1>
+          <ul class="sidemenu">
+            <li><a href="selectoverview.html">Overview</a></li>
+            <li><a href="selectimplement.html">Implementation</a></li>
+            <li><a href="selectvisual.html">Visualizer</a></li>
+            <li><a href="selectcode.html">Algorithm - Analysis</a></li>
+            <li><a href="selectexam.html">Examples</a></li>
+    
+          </ul>
+        </div>
+    
+      </header>
+      <script src="SelectionSort.js"></script>
+    </body>
+    
+    </html>

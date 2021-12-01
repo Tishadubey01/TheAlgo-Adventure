@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Selection Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Algorithm - Analysis</h1>
+
+      <br>
+      <h2> &emsp;Algorithm: </h2>
+      <p> <code>
+        procedure selectionSort <br>
+        &emsp;list: array of items<br>
+        &emsp;n: size of list<br>
+        &emsp;for i=1 to n-1<br>
+        <em>// Set current element as minimum</em><br>
+        &emsp;&emsp;min=i<br><br>
+        <em>// Check the element to be minimum </em><br>
+        &emsp;&emsp;for j=i+1 to n<br>
+        &emsp;&emsp;&emsp;if list[j] &lt; list[min] then<br>
+        &emsp;&emsp;&emsp;&emsp;min=j<br>
+        &emsp;&emsp;&emsp;end if<br>
+        &emsp;&emsp;end for<br>
+        <em>//Swap the minimum element with current element</em><br>
+        &emsp;&emsp;if indexMin != i the<br>
+        &emsp;&emsp;&emsp;swap list[min] and list[i]<br>
+        &emsp;&emsp;end if<br>
+        &emsp;end for<br>
+        end procedure<br>
+
+
+
+
+
+   
+      </code></p>
+      <h2>&emsp;Pseudo Code</h2>
+      <p><code>
+        void selectionSort(int *Arr, size_t length) <br>
+{<br>
+    
+    &emsp;for (size_t i=0;i&lt;length;i++)<br>
+    &emsp;{ <br>
+        &emsp;&emsp;size_t smallestindex=i;<br>
+        <em>// run through the unsorted elements in the input, finding
+     the smallest one.</em><br>
+        &emsp;&emsp;for (size_t j=i+1;j&lt;length;j++)<br> 
+        &emsp;&emsp;&emsp;{<br>       
+            &emsp;&emsp;&emsp;&emsp;if (Arr[j]&lt;Arr[smallestindex])<br>
+            &emsp;&emsp;&emsp;&emsp;{<br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;smallestindex=j;<br> 
+                &emsp;&emsp;&emsp;&emsp;}<br>
+        &emsp;&emsp;&emsp;}<br>
+        <em>// move the smallest element to the front of the unsorted portion
+         of the input (swapping with whatever's already there)..</em><br>
+        &emsp;&emsp;int temp= Arr[smallestindex];<br>
+        &emsp;&emsp;Arr[smallestindex]=Arr[i];<br>
+        &emsp;&emsp;Arr[i]=temp;<br>
+        &emsp;}<br>
+            }<br>
+        
+
+      </code></p>
+      <h2> &ensp;Time Complexity Analysis: </h2>
+      <p> Selection Sort requires two nested for loops to complete itself, one for loop is in the function selectionSort, and inside the first loop we are making a call to another function smallestindex, which has the second(inner) for loop.
+
+         <br><br>
+       
+        Hence for a given input size of n, following will be the time and space complexity for selection sort algorithm:<br>
+      </p>
+      <ol>
+        <li><span> Best Case Time Complexity:<strong> O(n²)</strong></span></li>
+        <li><span> Worst Case Time Complexity:<strong>  O(n²)</strong>
+
+        </span></li>
+        <li><span> Average Time Complexity: <strong>  O(n²)</strong></span></li>
+        <br>
+      </ol>
+      <br>
+      <p>The time complexity of selectionSort is O(n²) in all the 3 cases (worst, average and best) as this algorithm sorts an array or list by repeatedly finding the minimum value.
+        
+      <h2> Space Time Complexity:</h2>
+      <ol>
+        <li><span> Selection sort is an in-place algorithm.</span></li>
+        <li><span> It performs all computation in the original array and no other array is used
+.
+        </span></li>
+        <li><span> Hence, the space complexity works out to be <strong>O(1)</strong>.</span></li>
+        <br>
+      </ol>
+      <br>
+      <div id="nextPreviousButtons">
+
+
+        <a href="selectimplement.html" class="previous"> &laquo; Previous</a>
+        <a href="selectexam.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="selectoverview.html">Overview</a></li>
+        <li><a href="selectimplement.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="selectcode.html">Algorithm - Analysis</a></li>
+        <li><a href="selectexam.html">Examples</a></li>
+
+    </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

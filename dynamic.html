@@ -1,23 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
-</head>
-<body>
-    <header class="Dynamic">
 
-		<ul class="Navigation" id="navig">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Searching">
+    <figure class="textover" id="search">
+      <img src="./images/bg4.jpg" id="bg" alt="">
+      <h1>Dynamic Programming</h1>
+      <h2>Introduction to Dynamic Programming</h2>
+      <p>
+        Dynamic Programming (commonly referred to as DP) is an algorithmic technique for solving a problem by<br> recursively breaking it down into simpler subproblems and using the fact that the optimal solution to the<br> overall problem depends upon the optimal solution to it’s individual subproblems
+        <span id="dots">...<br><br></span><span id="more"><br><br>DP algorithm solves each subproblem just once and then remembers its answer, thereby avoiding<br>re-computation of the answer for similar subproblem every time.<br>
+			It is the most powerful design technique for solving optimization related problems.<br> </span>
+<br>
+
+        <button onclick="toggleText()" id="textButton">Read more</button>
+        <br><br> Topics discussed in DP are:  <br> <br>
+		1. <a href="fibonacci.html" style="color:rgb(226, 186, 25);" rel="no opener"><strong> <u>
+
+
+
+           Fibonacci </u></strong></a> <br>
+
+        
+        
+
+
+        <br>2.<a href="knapsack.html" style="color: rgb(226, 186, 25);" rel="no opener"><Strong> <u>
+
+           0/1 Knapsack </u></Strong></a>
+        <br>
+		<br>3.<a href="long.html" style="color: rgb(226, 186, 25);" rel="no opener"><Strong> <u>
+
+			Longest Common Sub-Sequence </u></Strong></a>
+		 <br>
+      </p>
+
+
+    </figure>
+
+  </header>
+
+  <!--<ul class="Navigation" id="navig">
 			<li class="inner">
 				<a  href="index.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()" ><strong> Home </strong></a>
 
 			</li>
 			<li class="inner">
-				<a href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
+				<a class="active" href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
 				
 			</li>
 			<li class="inner">
@@ -28,10 +101,11 @@
 
 			</li>
 			<li class="inner">
-				<a class="active" href="dynamic.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Dynamic Programming </strong></a>
+				<a href="dynamic.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Dynamic Programming </strong></a>
 
 			</li>
 			
-		</ul>
+		</ul>-->
 </body>
+
 </html>

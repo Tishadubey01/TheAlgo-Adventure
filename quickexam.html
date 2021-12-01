@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Quick Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Examples</h1>
+      <h2><br>Code Example: (in C)</h2><br>
+      <p> <code>
+        &emsp;&emsp;// Quick Sort in C <br>
+
+#include &lt;stdio.h&gt; <br>
+<em>/* function that consider last element as pivot,  
+    place the pivot at its exact position, and place  
+    smaller elements to left of pivot and greater  
+    elements to right of pivot.  */  </em><br>
+
+
+int partition(int a[ ],int start, int end)<br> 
+{<br>
+  
+  &emsp;int pivot=a[end];<br>
+  &emsp;int i=(start-1);<br>
+  <br>&emsp;for (int j=start;j&lt;=end;j++)<br>
+  &emsp;{<br>
+    &emsp;&emsp;if (a[j]&lt;pivot)<br>
+    &emsp;&emsp;{<br>
+        &emsp;&emsp;&emsp;i++;<br>
+        &emsp;&emsp;&emsp;int t=a[i];<br>
+        &emsp;&emsp;&emsp;a[i]=a[j];<br>
+        &emsp;&emsp;&emsp;a[j]=t;<br>
+        &emsp;&emsp;}<br>
+        &emsp;}<br>
+        &emsp;int t=a[i+1];<br>
+        &emsp;a[i+1]=a[end];<br>
+        &emsp;a[end]=t;<br>
+        &emsp;return (i+1);<br>
+    }<br><br>
+    <em>/* function to implement quick sort */  </em><br>
+    void quick(int a[ ], int start, int end)<br>
+    {<br>
+        &emsp;if(start&lt;end)<br>
+        &emsp;{<br>
+            &emsp;&emsp;int p=partition(a,start,end);<br>
+            &emsp;&emsp;quick(a,start,p-1);<br>
+            &emsp;&emsp;quick(A,p+1,end);<br>
+            &emsp;}<br>
+        }<br>
+
+    
+
+
+
+int main()<br> {<br>
+
+  
+    &emsp;int a[ ] = { 24, 9, 29, 14, 19, 27 };<br>
+    &emsp;int n = sizeof(a)/sizeof(a[0]);<br>
+    &emsp;int i;<br>
+    &emsp;quick(a,0,n-1);<br>
+    &emsp;for(i=0;i&lt;n;i++)<br>
+    &emsp;&emsp;printf("Elements after sorting: %d",a[i]);<br>
+  
+    
+  }<br>
+
+</code></p>
+      <h3>Output: </h3><br>
+      <p><code>
+       
+        List after sorting: 
+9 14 19 24 27 29<br>
+</code></p>
+      <h2>Advantages:</h2>
+
+      <br>
+      <ol>
+        <li><span> Space required by quick sort is very less, only O(n*log n) additional space is required.</span></li>
+        <li><span> It is in-place since it uses only a small auxiliary stack.
+          </span></li>
+        
+        <br>
+      </ol><br>
+      <h2>Real-time application of Quicksort</h2>
+
+      <br>
+      <ol>
+        <li><span> Quicksort is a cache-friendly algorithm as it has a good locality of reference when used for arrays.</span></li>
+        <li><span>It is an in-place sort that does not require any extra storage memory.</span></li>
+        <li><span>Commercial Computing is used in various government and private organizations for the purpose of sorting various data like sorting files by name/date/price, sorting of students by their roll no., sorting of account profile by given id, etc.</span></li>
+        
+        <br>
+      </ol><br>
+
+      <div id="nextPreviousButtons">
+
+
+        <a href="quickcode.html" class="previous"> &laquo; Previous</a>
+
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="quickover.html">Overview</a></li>
+        <li><a href="quickimplmnt.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="quickcode.html">Algorithm - Analysis</a></li>
+        <li><a href="quickexam.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Quick Sort</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Algorithm - Analysis</h1>
+
+      <br>
+      <h2> &emsp;Algorithm: </h2>
+      <p> <code>
+       partition(array,leftmostindex,rightmostindex)<br>
+        &emsp;set rightmostindex as pivotindex<br>
+        &emsp; storeindex &lt;- leftmostindex - 1<br>
+        &emsp; for i &lt;- leftmostindex + 1 to rightmostindex <br>
+        &emsp; if element[i] &lt; pivotelement<br>
+        &emsp; &emsp;swap element[i] and element[storeindex]<br>
+        &emsp;&emsp; &emsp;storeindex++<br>
+        &emsp; &emsp;swap pivotelement and element[storeindex+1]<br>
+        &emsp;return storeindex+1<br><br>
+        quickSort(array,leftmostindex,rightmostindex)<br>
+        &emsp;if (leftmostindex &lt; rightmostindex)<br>
+        &emsp; &emsp;pivotindex &lt;- partition(array,leftmostindex,rightmostindex)<br>
+        &emsp; &emsp;quickSort(array,leftmostindex,pivotindex-1)<br>
+        &emsp; &emsp;quickSort(array,pivotindex,rightmostindex)<br>
+        
+
+
+   
+      </code></p>
+      <h2>&emsp;Pseudo Code</h2>
+      <p><code>
+        int partition(int a[ ],int start, int end)<br> 
+        {<br>
+          
+          &emsp;int pivot=a[end];<br>
+          &emsp;int i=(start-1);<br>
+          <br>&emsp;for (int j=start;j&lt;=end;j++)<br>
+          &emsp;{<br>
+            &emsp;&emsp;if (a[j]&lt;pivot)<br>
+            &emsp;&emsp;{<br>
+                &emsp;&emsp;&emsp;i++;<br>
+                &emsp;&emsp;&emsp;int t=a[i];<br>
+                &emsp;&emsp;&emsp;a[i]=a[j];<br>
+                &emsp;&emsp;&emsp;a[j]=t;<br>
+                &emsp;&emsp;}<br>
+                &emsp;}<br>
+                &emsp;int t=a[i+1];<br>
+                &emsp;a[i+1]=a[end];<br>
+                &emsp;a[end]=t;<br>
+                &emsp;return (i+1);<br>
+            }<br><br>
+            <em>/* function to implement quick sort */  </em><br>
+            void quick(int a[ ], int start, int end)<br>
+            {<br>
+                &emsp;if(start&lt;end)<br>
+                &emsp;{<br>
+                    &emsp;&emsp;int p=partition(a,start,end);<br>
+                    &emsp;&emsp;quick(a,start,p-1);<br>
+                    &emsp;&emsp;quick(A,p+1,end);<br>
+                    &emsp;}<br>
+                }<br>
+
+      </code></p>
+      <h2> &ensp;Time Complexity Analysis: </h2>
+      <p> Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation.
+
+              
+      </p>
+      <ol>
+        <li><span> Best Case Time Complexity:<strong>  O(n*log n)</strong>
+        <br>The best-case occurs when the pivot element is the middle element or near to the middle element. </span></li>
+        <li><span> Worst Case Time Complexity:<strong>  O(n²)</strong>
+            <br>worst case occurs when the pivot element is either greatest or smallest element. Suppose, if the pivot element is always the last element of the array, the worst case would occur when the given array is sorted already in ascending or descending order. 
+
+        </span></li>
+        <li><span> Average Time Complexity: <strong>  O(n*log n)</strong>
+        <br>It occurs when the array elements are in jumbled order that is not properly ascending and not properly descending. The average case time complexity of quicksort is O(n*logn).
+    </span></li>
+        <br>
+      </ol>
+      <br>
+     
+        
+      <h2> Space Time Complexity:</h2>
+      <ol>
+        <li><span> Auxiliary Space: O(n*log n)</span></li>
+        <li><span> It is non-stable algorithm.
+
+        </span></li>
+        <li><span> Algorithm : Divide and Conquer</span></li>
+        <br>
+      </ol>
+      <br>
+      <div id="nextPreviousButtons">
+
+
+        <a href="quickimplmnt.html" class="previous"> &laquo; Previous</a>
+        <a href="quickexam.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="quickover.html">Overview</a></li>
+        <li><a href="quickimplmnt.html">Implementation</a></li>
+        <li><a href="visualizer.html">Visualizer</a></li>
+        <li><a href="quickcode.html">Algorithm - Analysis</a></li>
+        <li><a href="quickexam.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>

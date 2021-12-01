@@ -1,28 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
 </head>
 
-<body>
-    <header class="Sorting">
 
-		<ul class="Navigation" id="navig">
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Searching">
+    <figure class="textover" id="search">
+      <img src="./images/bg4.jpg" id="bg" alt="">
+      <h1>Sorting Algorithms</h1>
+      <h2>Introduction to Sorting Algorithms</h2>
+      <p>
+        The most common example we experience every day is sorting clothes or other items on an
+        e-commerce website <br> either by lowest-price to highest, or list by popularity, or some other
+        order.<br><br>Sorting Algorithms are methods of reorganizing a large number of items into some specific
+        order <br> such as highest to lowest, or vice-versa, or even in some alphabetical order.
+        <span id="dots">...<br><br></span><span id="more"><br> <br>These algorithms take an input list, processes it
+          (i.e, performs some operations on it),<br> and
+          produce the sorted list.<br><br></span>
+
+
+        <button onclick="toggleText()" id="textButton">Read more</button>
+        <br><br> These algorithms are generally classified into two main categories based on their algorithm method:
+        <br> <br>
+        1.<strong style="color:rgb(226, 186, 25);"> <em> Iterative Method : </em> </strong> An iterative algorithm
+        executes steps in iterations. It aims to find successive<br> approximation in sequence to reach a
+        solution.<br><br> For example:&ensp;
+
+        <a href="bubble.html" style="color:aquamarine;" rel="no opener"><strong> <u>
+
+
+
+              Bubble Sort </strong> </a>
+        </u> , <a href="selection.html" style="color:aquamarine;" rel="no opener"><strong> <u>
+
+
+
+              Selection Sort </strong> </a>
+        </u> ,<a href="insertion.html" style="color:aquamarine;" rel="no opener"><strong> <u>
+
+
+
+              Insertion Sort </strong> </a> <br>
+        </u>
+
+
+        <br><br>2.<strong style="color:rgb(226, 186, 25);"><em> Divide & Conquer Method : </strong></em> This algorithm
+        recursively breaks down a problem into two <br> or more sub-problems of the same or related type, until these
+        become simple enough to be <br>solved directly. The solutions to the sub-problems are then combined to give a
+        solution<br> to the original problem.
+        <br><br>For example:&ensp; <a href="merge.html" style="color: aquamarine;" rel="no opener"><Strong> <u>
+
+              Merge Sort</Strong></a>
+        </u>,<a href="quick.html" style="color:aquamarine;" rel="no opener"><strong> <u>
+
+
+
+              Quick Sort </strong> </a> <br>
+        </u>
+      </p>
+
+
+    </figure>
+
+  </header>
+
+  <!--<ul class="Navigation" id="navig">
 			<li class="inner">
 				<a  href="index.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()" ><strong> Home </strong></a>
 
 			</li>
 			<li class="inner">
-				<a href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
+				<a class="active" href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
 				
 			</li>
 			<li class="inner">
-				<a class="active" href="sorting.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Sorting Algoritms </strong></a>
+				<a href="sorting.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Sorting Algoritms </strong></a>
 			</li>
 			<li class="inner">
 				<a href="graphs.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Graphs </strong></a>
@@ -33,6 +127,7 @@
 
 			</li>
 			
-		</ul>
+		</ul>-->
 </body>
+
 </html>

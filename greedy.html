@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Searching">
+    <figure class="textover" id="search">
+      <img src="./images/bg4.jpg" id="bg" alt="">
+      <h1>&ensp;Greedy Algorithm</h1>
+      <h2>Introduction to Greedy Algorithms</h2>
+      <p>
+        In greedy algorithm approach, decisions are made from the given solution domain. As being greedy,<br> the closest solution that seems to provide an optimum solution is chosen.<br>
+        Greedy algorithms have some advantages and disadvantages:
+        <span id="dots">...<br><br></span><span id="more"><br><br>
+        
+            It is quite easy to come up with a greedy algorithm (or even multiple greedy algorithms) for a problem.
+         <br>
+         Analyzing the run time for greedy algorithms will generally be much easier than for other techniques.<br>
+         The difficult part is that for greedy algorithms you have to work much harder to understand correctness<br>issues. Even with the correct algorithm, it is hard to prove why it is correct. Proving that a greedy<br> algorithm is correct is more of an art than a science. It involves a lot of creativity.
+         <br>   <br></span>
+
+
+        <button onclick="toggleText()" id="textButton">Read more</button>
+        <br><br> The MST greedy algos are:  <br> <br>
+        1. <a href="prism.html" style="color:rgb(226, 186, 25);" rel="no opener"><strong> <u>
+
+
+
+            Prim's Algorithm: </u></strong></a> It refers to the process of visiting each vertex of the graph.<br>
+
+        
+        
+
+
+        <br>2.<a href="kruskal.html" style="color: rgb(226, 186, 25);" rel="no opener"><Strong> <u>
+
+            Kruskal's Algorithm: </u></Strong></a>
+        Finding a path between two vertices (or nodes) in a graph <br>such that the sum of the weights of its constituent edges is minimized.<br>
+       
+      </p>
+
+
+    </figure>
+
+  </header>
+
+  <!--<ul class="Navigation" id="navig">
+			<li class="inner">
+				<a  href="index.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()" ><strong> Home </strong></a>
+
+			</li>
+			<li class="inner">
+				<a class="active" href="searching.html" id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Searching Algorithms </strong></a>
+				
+			</li>
+			<li class="inner">
+				<a href="sorting.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Sorting Algoritms </strong></a>
+			</li>
+			<li class="inner">
+				<a href="graphs.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Graphs </strong></a>
+
+			</li>
+			<li class="inner">
+				<a href="dynamic.html"id="change" onmouseover="changecolour()" onmouseout="samecolour()"><strong> Dynamic Programming </strong></a>
+
+			</li>
+			
+		</ul>-->
+</body>
+
+</html>

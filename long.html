@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+    <div id="wrap">
+
+      <h1 id="logo-text">LCS</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Overview</h1><br>
+      <p>
+
+        Longest Common Sub-Sequence(LCS) is defined as the longest subsequence that is common to all the given sequences, provided that the elements of the subsequence are not required to occupy consecutive positions within the original sequences.<br>
+     <br>   If S1 and S2 are the two given sequences then, Z is the common subsequence of S1 and S2 if Z is a subsequence of both S1 and S2. Furthermore, Z must be a strictly increasing sequence of the indices of both S1 and S2.
+      
+    <br><br>In a strictly increasing sequence, the indices of the elements chosen from the original sequences must be in ascending order in Z.
+<br><img src="./images/long.gif" style="align-self: center;padding-left: 35%;"><br>
+    <br><br>If
+
+    S1 = {B, C, D, A, A, C, D}
+    Then, {A, D, B} cannot be a subsequence of S1 as the order of the elements is not the same (ie. not strictly increasing sequence).
+    <br><br>If
+
+    S1 = {B, C, D, A, A, C, D}
+    S2 = {A, C, D, B, A, C}
+    Then, common subsequences are {B, C}, {C, D, A, C}, {D, A, C}, {A, A, C}, {A, C}, {C, D}, ...
+    
+    Among these subsequences, {C, D, A, C} is the longest common subsequence. <br>
+    
+      <h1>Implementation</h1>
+      <br>
+
+      <p>Let us take two sequences:
+         <br> <img src="./images/long1.jpeg" style="align-self: center;padding-left: 35%;"><br>
+          Create a table of dimension n+1*m+1 where n and m are the lengths of X and Y respectively. The first row and the first column are filled with zeros.<br>
+         <br> <img src="./images/long2.jpeg" style="align-self: center;padding-left: 35%;"><br>
+          Fill each cell of the table using the following logic.<br>
+          <br>
+          If the character correspoding to the current row and current column are matching, then fill the current cell by adding one to the diagonal element. Point an arrow to the diagonal cell.<br>
+          <br>
+          Else take the maximum value from the previous column and previous row element for filling the current cell. Point an arrow to the cell with maximum value. If they are equal, point to any of them.<br>
+         <br> <img src="./images/long3.jpeg" style="align-self: center;padding-left: 35%;"><br>
+Step 2 is repeated until the table is filled.<br>
+<br><img src="./images/long4.jpeg" style="align-self: center;padding-left: 35%;"><br>
+The value in the last row and the last column is the length of the longest common subsequence.<br>
+<img src="./images/long5.jpeg" style="align-self: center;padding-left: 35%;"><br>
+In order to find the longest common subsequence, start from the last element and follow the direction of the arrow. The elements corresponding to () symbol form the longest common subsequence.<br>
+<br>
+<img src="./images/long6.jpeg" style="align-self: center;padding-left: 35%;"><br>
+<strong>Thus, the longest common subsequence is CA.</strong>
+      </p>
+      <h1>Algorithm</h1>
+      <br>
+      <pre>
+          <code>
+            X and Y be two given sequences
+            Initialize a table LCS of dimension X.length * Y.length
+            X.label = X
+            Y.label = Y
+            LCS[0][] = 0
+            LCS[][0] = 0
+            Start from LCS[1][1]
+            Compare X[i] and Y[j]
+                If X[i] = Y[j]
+                    LCS[i][j] = 1 + LCS[i-1, j-1]   
+                    Point an arrow to LCS[i][j]
+                Else
+                    LCS[i][j] = max(LCS[i-1][j], LCS[i][j-1])
+                    Point an arrow to max(LCS[i-1][j], LCS[i][j-1])
+          </code>
+      </pre>
+      <h1>Applications</h1>
+      <br><ol>
+        <li>
+          <span>
+            The longest common subsequence problem forms the basis of data comparison programs and use in the field of bioinformatics.
+          </span>
+        </li>
+       
+        
+      </ol><br>
+      <h1>Time Complexity</h1>
+      <br><ol>
+        <li>
+          <span>
+            O(m*n) where m = length of 1st string and n = length of 2nd string.
+          </span>
+        </li>
+       
+        
+      </ol><br>
+      <br><div id="nextPreviousButtons">
+
+
+        <a href="knapsack.html" class="previous"> &laquo; Previous </a>
+ 
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>
+      

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div w3-include-HTML="header.html">My HTML include will go here.</div>
+    <script>
+        (function () {
+            myHTMLInclude();
+            function myHTMLInclude() {
+                var z, i, a, file, xhttp;
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    if (z[i].getAttribute("w3-include-html")) {
+                        a = z[i].cloneNode(false);
+                        file = z[i].getAttribute("w3-include-html");
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                a.removeAttribute("w3-include-html");
+                                a.innerHTML = xhttp.responseText;
+                                z[i].parentNode.replaceChild(a, z[i]);
+                                myHTMLInclude();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        return;
+                    }
+                }
+            }
+        })();
+    </script>
+    <header class="Linear_Search">
+
+        <div id="wrap">
+
+            <h1 id="logo-text">Quick Sort</h1>
+        </div>
+        <div id="main"><a name="Overview"></a>
+            <h1>Implementation</h1>
+            <p>Quicksort is a sorting algorithm based on the divide and conquer approach
+                where <br>
+
+            <div id="step1">
+
+                <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> An array is divided into subarrays by selecting a pivot element
+                    (element selected from the array).<br>While dividing the array, the pivot element should be positioned in
+                    such a way that elements less than pivot are kept on the left side and
+                    elements greater than pivot are on the right side of the pivot.
+                </em><br>
+                <br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> The left and right subarrays are also divided using the same approach. <br>This process continues until each subarray contains a single element.</em> <br>
+                <br><strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> At this point, elements are already sorted. Finally, elements are
+                    combined to form a sorted array.</em> <br><br>
+                <hr> <br></div>
+
+            </p>
+                    
+                    <ol>
+                        <li><span>
+                            Selecting a pivot element, in this case we are selecting tthe rightmost element of the array as pivot element.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/quick1.png">
+                        <li><span>
+                            Now the elements of the array are rearranged so that elements that are smaller than the pivot are put on the left and the elements greater than the pivot are put on the right.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/quick2.png">
+                        <li><span>
+                            A pointer is fixed at the pivot element. The pivot element is compared with the elements beginning from the first index. 
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/quick3.png">
+                        <li><span>
+                            If the element is greater than the pivot element, a second pointer is set for that element. 
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/quick4.png">
+                        <li><span>
+                            Now, pivot is compared with other elements. If an element smaller than the pivot element is reached, the smaller element is swapped with the greater element found earlier. 
+                        </span></li>
+                        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp;&emsp;
+                    &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                        src="./images/quick5.png">
+                        <li><span>
+                            Again, the process is repeated to set the next greater element as the second pointer. And, swap it with another smaller element. 
+                        </span></li>
+                        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                            src="./images/quick6.png">
+                            <li><span>
+                                The process goes on until the second last element is reached. 
+    
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                            src="./images/quick7.png">
+                            <li><span>
+                                Finally, the pivot element is swapped with the second pointer.
+    
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                            src="./images/quick8.png">
+                            <li><span>
+                                Pivot elements are again chosen for the left and the right sub-parts separately. And, step 2 is repeated.
+    
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+                            src="./images/quick9.png">
+                            <li><span>
+                                The subarrays are divided until each subarray is formed of a single element. At this point, the array is already sorted.
+                            </span></li>
+                            <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp;&emsp;
+                        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;
+                            
+                            
+                    </ol>
+                    
+
+                </ol>
+            </p>
+            
+            
+        
+            
+            
+            
+            
+            
+            
+            <br><br>
+            <div id="nextPreviousButtons">
+                
+                
+                <a href="quickover.html" class="previous"> &laquo; Previous</a>
+                <a href="quickcode.html" class="next">Next &raquo;</a>
+            </div>
+        </div>
+    </div>        
+            
+        
+        
+
+            <div id="sidebar">
+                <h1>Table of Contents</h1>
+                <ul class="sidemenu">
+                    <li><a href="quickover.html">Overview</a></li>
+                    <li><a href="quickimplmnt.html">Implementation</a></li>
+                    <li><a href="visualizer.html">Visualizer</a></li>
+                    <li><a href="quickcode.html">Algorithm - Analysis</a></li>
+                    <li><a href="quickexam.html">Examples</a></li>
+            
+                  </ul>
+            </div>
+
+    </header>
+
+</body>
+
+</html>

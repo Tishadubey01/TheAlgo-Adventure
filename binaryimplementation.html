@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Binary Search</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Implementation</h1>
+      <p> <br>Binary search is implemented using following steps...<br><br>
+        Consider the following list of elements and the element to be searched...<br><br>
+        &emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img
+          src="./images/binary1.png"><br><br>
+
+      <div id="step1">
+
+        <strong style="color:rgb(47, 122, 184);"> Step 1 :</strong> <em> Read the search element from the user.
+        </em><br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp; Search element = 31.<br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 2 :</strong> <em> Find the middle element in the sorted
+          list.<br>&emsp; mid = low + (high - low) / 2 </em><br>
+        <br>&emsp; &MediumSpace;&emsp;Here it is, 0 + (9 - 0 ) / 2 = 4 (integer value of 4.5). So, 4 is the mid of the
+        array.<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/binary2.png">
+        <br>
+
+        <br>
+        <hr><br> <strong style="color:rgb(47, 122, 184);"> Step 3 :</strong> <em> Compare the search element with the
+          middle element in the sorted list.</em><br>
+        <br>&emsp; &MediumSpace;&emsp;Now we compare the value stored at location 4, with the value being searched, i.e.
+        31<br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 4 :</strong><em> If both are matched, then display "Given
+          element is found!!!" and terminate the function.</em><br>
+
+        <br>
+        <hr><br> <strong style="color:rgb(47, 122, 184);"> Step 5 :</strong> <em>If both are not matched, then check
+          whether the search element is smaller or larger than the middle element.</em> <br>
+        <br>&emsp; &MediumSpace;&emsp; We find that the value at location 4 is 27, which is not a match. As the value is
+        greater than 27 and we have a sorted array, so we also know that the target value
+        must be in the upper portion of the array<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/binary3.png">
+        <br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 6 :</strong> <em> If the search element is larger than
+          middle element, repeat steps 2, 3, 4 and 5 for the right sublist of the middle element.</em> <br>
+        <br>&emsp; &MediumSpace;&emsp; We change our low to mid + 1 and find the new mid value again.
+        <br>&emsp; &MediumSpace;&emsp; low = mid + 1<br>
+        &emsp; &MediumSpace;&emsp; mid = low + (high - low) / 2<br>
+        <br>&emsp; &MediumSpace;&emsp; Our new mid is 7 now. We compare the value stored at location 7 with our target
+        value 31<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/binary4.png">
+        <br>
+
+        &emsp; &MediumSpace;&emsp; The value stored at location 7 is not a match, rather it is more than what we are
+        looking for.<br>
+        <br>
+        <hr><br><strong style="color:rgb(47, 122, 184);"> Step 7 :</strong> <em> If the search element is smaller than
+          middle element, repeat steps 2, 3, 4 and 5 for the right sublist of the middle element.</em> <br>
+        <br>&emsp; &MediumSpace;&emsp; The value 7 is more than what we are
+        looking for.So,the value must be in the lower part from this location<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/binary5.png">
+        <br>
+        <br>&emsp; &MediumSpace;&emsp;Hence, we calculate the mid again. This time it is 5<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/binary6.png">
+        <br>
+        <br>&emsp; &MediumSpace;&emsp;We compare the value stored at location 5 with our target value. We find that it
+        is a
+        match.<br>
+        <br>&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp; &MediumSpace;&emsp;&emsp;&emsp;
+        &MediumSpace;&emsp;&emsp; &emsp; &MediumSpace;&emsp;&emsp; &MediumSpace;&emsp;<img src="./images/binary7.png">
+        <br>
+        <br>&emsp; &MediumSpace;&emsp;We conclude that the target value 31 is stored at location 5.<br>
+      </div>
+      </p>
+      <div id="nextPreviousButtons">
+
+
+        <a href="binaryoverview.html" class="previous"> &laquo; Previous</a>
+        <a href="binarycode.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="binaryoverview.html">Overview</a></li>
+        <li><a href="binaryimplementation.html">Implementation</a></li>
+        <li><a href="searchvisual.html">Visualizer</a></li>
+        <li><a href="binarycode.html">Algorithm - Analysis</a></li>
+        <li><a href="binaryexample.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+  </header>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="index.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+  <div w3-include-HTML="header.html">My HTML include will go here.</div>
+  <script>
+    (function () {
+      myHTMLInclude();
+      function myHTMLInclude() {
+        var z, i, a, file, xhttp;
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          if (z[i].getAttribute("w3-include-html")) {
+            a = z[i].cloneNode(false);
+            file = z[i].getAttribute("w3-include-html");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState == 4 && xhttp.status == 200) {
+                a.removeAttribute("w3-include-html");
+                a.innerHTML = xhttp.responseText;
+                z[i].parentNode.replaceChild(a, z[i]);
+                myHTMLInclude();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
+  <header class="Linear_Search">
+
+    <div id="wrap">
+
+      <h1 id="logo-text">Linear Search</h1>
+    </div>
+    <div id="main"><a name="Overview"></a>
+
+      <h1>Algorithm - Analysis</h1>
+
+      <br>
+      <h2> &emsp;Algorithm: </h2>
+      <p> <code>
+        procedure linear_search (list, value) <br>
+
+    &emsp;for each item in the list <br>
+      &emsp;&emsp;&emsp;if match item == value <br>
+         &emsp;&emsp;&emsp;&emsp;return the item's location <br>
+      &emsp;&emsp;&emsp;end if <br>
+   &emsp;end for <br>
+
+end procedure <br>
+      </code></p>
+      <h2>&emsp;Pseudo Code</h2>
+      <p><code>
+        int linear_search(int values[], int target, int n) <br>
+{<br>
+    &emsp;&emsp;for(int i = 0; i < n; i++)<br>
+    &emsp;&emsp;{ <br>
+        &emsp;&emsp;&emsp;if (values[i] == target)<br> 
+        &emsp;&emsp;&emsp;{<br>       
+            &emsp;&emsp;&emsp;&emsp;return i;<br> 
+        &emsp;&emsp;&emsp;}<br>
+    &emsp;&emsp;}<br>
+    &emsp;return -1; <br>
+}
+      </code></p>
+      <h2> &ensp;Time Complexity Analysis: </h2>
+      <p> Linear Search time complexity analysis is done in the following ways:- <br><br>
+        <strong> Best Case [ O(1) ]<br></strong>
+        In the best possible case,
+      </p>
+      <ol>
+        <li><span> The element being searched may be found at the first position.</span></li>
+        <li><span> In this case, the search terminates in success with just one comparison.</span></li>
+        <li><span> Thus in best case, linear search algorithm takes <strong> O(1) operations.</strong></span></li>
+        <br>
+      </ol>
+      <hr><br>
+      <p><strong> Worst Case [ O(n) ]<br></strong>
+        In the worst possible case, </p>
+      <ol>
+        <li><span> The element being searched may be present at the last position or not present in the array at
+            all.</span></li>
+        <li><span> In the former case, the search terminates in success with N comparisons.
+          </span></li>
+        <li><span> In the later case, the search terminates in failure with N comparisons.</span></li>
+        <li><span> Thus in worst case, linear search algorithm takes <strong> O(N) operations.</strong></span></li>
+        <br>
+      </ol>
+      <hr> <br>
+      <p><strong> Average Case [ O(N) ]<br></strong>
+        Let there be N distinct numbers: a1, a2, ..., a(N-1), aN.
+        We need to find element P.<br> There are two cases:</p>
+      <ol>
+        <li><span> Case 1: The element P can be in N distinct indexes from 0 to N-1.</span></li>
+        <li><span> Case 2: There will be a case when the element P is not present in the list.
+          </span></li>
+
+        <br>
+      </ol>
+      <p> There are N case 1 and 1 case 2. So, there are N+1 distinct cases to consider in total.If element P is in
+        index K, then Linear Search will do K+1 comparisons.<br>
+        Number of comparisons for all cases in case 1 = Comparisons if element is in index 0 + Comparisons if element is
+        in index 1 + ... + Comparisons if element is in index N-1<br>
+        =1 + 2 + ... + N<br>
+        = N * (N+1) / 2 comparisons<br>
+        If element P is not in the list, then Linear Search will do N comparisons.<br>
+        Number of comparisons for all cases in case 2 = N. Therefore,
+      </p>
+      <ol>
+        <li><span> Total number of comparisons for all N+1 cases = N * (N+1) / 2 + N <br>
+            = N * ((N+1)/2 + 1)</span></li>
+        <li><span> Average number of comparisons = ( N * ((N+1)/2 + 1) ) / (N+1) <br>
+            = N/2 + N/(N+1)
+          </span></li>
+
+        <br>
+      </ol>
+      <p> The dominant term in "Average number of comparisons" is N/2. <br> Thus in the Average Case, linear search
+        algorithm takes <strong> O(N) operations. </strong></p>
+      <h2> Space Time Complexity:</h2>
+      <p>The linear search only need one element (that is the variable you used to compare with all the elements in the
+        array), so no matter how big or small your array is, the algorithm only consumes the same amount of memory for
+        all input.<br>Thus is space complexity is <strong>O(1)</strong></p>
+      <div id="nextPreviousButtons">
+
+
+        <a href="linearimplementation.html" class="previous"> &laquo; Previous</a>
+        <a href="linearexample.html" class="next">Next &raquo;</a>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <h1>Table of Contents</h1>
+      <ul class="sidemenu">
+        <li><a href="linearoverview.html">Overview</a></li>
+        <li><a href="linearimplementation.html">Implementation</a></li>
+        <li><a href="searchvisual.html">Visualizer</a></li>
+        <li><a href="linearcode.html">Algorithm - Analysis</a></li>
+        <li><a href="linearexample.html">Examples</a></li>
+
+      </ul>
+    </div>
+
+
+
+
+
+  </header>
+</body>
+
+</html>
