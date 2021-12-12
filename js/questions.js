@@ -25,7 +25,7 @@ let questions = [
     {
     numb: 3,
     question: "Which one of the following in place sorting algorithms needs the minimum number of swaps?",
-    answer: "Selection Sort",
+    answer: "Selection sort",
     options: [
       "Quick sort",
       "Insertion sort",
