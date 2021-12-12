@@ -30,7 +30,7 @@ let questions = [
       "Quick sort",
       "Insertion sort",
       "Selection sort",
-      "Heap sort"
+      "None of these"
     ]
   },
     {
